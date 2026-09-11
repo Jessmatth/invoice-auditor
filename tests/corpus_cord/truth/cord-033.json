@@ -1,0 +1,29 @@
+{
+  "line_items": [
+    {
+      "description": "GRILLED BABY POTATO (R",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "50,500"
+    },
+    {
+      "description": "HOT TUNA",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "67,000"
+    },
+    {
+      "description": "HOT TUNA",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "67,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "117,500",
+    "discount_price": null,
+    "service_charge": "11,070",
+    "tax_amount": "19,557",
+    "total": "148,127"
+  }
+}

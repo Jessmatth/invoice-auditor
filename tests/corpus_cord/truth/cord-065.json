@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "Bubur Polos + Telur",
+      "quantity": "1",
+      "unit_price": "13.000",
+      "amount": "13.000"
+    }
+  ],
+  "totals": {
+    "subtotal": "13.000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "-",
+    "total": "13.000"
+  }
+}

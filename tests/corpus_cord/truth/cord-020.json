@@ -1,0 +1,41 @@
+{
+  "line_items": [
+    {
+      "description": "cashew nuts chkn",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "64,500"
+    },
+    {
+      "description": "garlic pepper beef",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "79,500"
+    },
+    {
+      "description": "red curry beef",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "69,500"
+    },
+    {
+      "description": "phad thai",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "64,500"
+    },
+    {
+      "description": "steamed rice",
+      "quantity": "4",
+      "unit_price": null,
+      "amount": "47,600"
+    }
+  ],
+  "totals": {
+    "subtotal": "325,600",
+    "discount_price": null,
+    "service_charge": "17,908",
+    "tax_amount": "34,351",
+    "total": "377,859"
+  }
+}

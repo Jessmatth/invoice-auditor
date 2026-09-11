@@ -1,0 +1,47 @@
+{
+  "line_items": [
+    {
+      "description": "TALAM UNGU",
+      "quantity": "1x",
+      "unit_price": "6500",
+      "amount": "6,500"
+    },
+    {
+      "description": "AREM - AREM",
+      "quantity": "1X",
+      "unit_price": "8000",
+      "amount": "8,000"
+    },
+    {
+      "description": "LEMPER",
+      "quantity": "2X",
+      "unit_price": "9000",
+      "amount": "18,000"
+    },
+    {
+      "description": "MIKA SEDANG",
+      "quantity": "1X",
+      "unit_price": "0",
+      "amount": "0"
+    },
+    {
+      "description": "PLASTIK KECIL",
+      "quantity": "1X",
+      "unit_price": "0",
+      "amount": "0"
+    },
+    {
+      "description": "TEH KOTAK",
+      "quantity": "1X",
+      "unit_price": "5000",
+      "amount": "5,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "24,500",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "24,500"
+  }
+}

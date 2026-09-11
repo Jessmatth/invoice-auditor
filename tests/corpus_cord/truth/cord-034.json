@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "Ash Chick Sambal Matah",
+      "quantity": "5",
+      "unit_price": null,
+      "amount": "75.000"
+    },
+    {
+      "description": "Jamur Goreng",
+      "quantity": "2",
+      "unit_price": null,
+      "amount": "10.000"
+    }
+  ],
+  "totals": {
+    "subtotal": "85.000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "8.500",
+    "total": "93.500"
+  }
+}

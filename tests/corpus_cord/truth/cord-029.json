@@ -1,0 +1,47 @@
+{
+  "line_items": [
+    {
+      "description": "COLD OCHA",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "10,909"
+    },
+    {
+      "description": "BCA PROMO",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "54,455"
+    },
+    {
+      "description": "SKEWERED SHUMAI",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "12,727"
+    },
+    {
+      "description": "SKEWERED TOFU ROLL",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "12,727"
+    },
+    {
+      "description": "EBI TEMPURA",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "13,636"
+    },
+    {
+      "description": "KITSUNE UDON (KIDS)",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "28,182"
+    }
+  ],
+  "totals": {
+    "subtotal": "132,636",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "13,264",
+    "total": "145,900"
+  }
+}

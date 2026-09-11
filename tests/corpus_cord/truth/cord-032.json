@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "THAI ICED GREEN TEA",
+      "quantity": "1",
+      "unit_price": "@24.000",
+      "amount": "24.000"
+    }
+  ],
+  "totals": {
+    "subtotal": "24.000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "24.000"
+  }
+}

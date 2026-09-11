@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "JASMINE MT ( L )",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "24,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "28,000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "28,000"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "PKT AYAM",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "33,000"
+    },
+    {
+      "description": "GULAI OTAK",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "23,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "56,000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "5,600",
+    "total": "61,600"
+  }
+}

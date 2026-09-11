@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "Chicken HCC. 1Pcs",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "15.000"
+    }
+  ],
+  "totals": {
+    "subtotal": "15,000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "1,500",
+    "total": "16,500"
+  }
+}

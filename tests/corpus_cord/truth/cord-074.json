@@ -1,0 +1,35 @@
+{
+  "line_items": [
+    {
+      "description": "BLACKCURRANT",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "32,000"
+    },
+    {
+      "description": "SPRITE",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "32,000"
+    },
+    {
+      "description": "GRILLED CALAMARI",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "85,000"
+    },
+    {
+      "description": "DINE FOR 2",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "129,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "278,000",
+    "discount_price": null,
+    "service_charge": "22,240",
+    "tax_amount": "30,024",
+    "total": "330,264"
+  }
+}

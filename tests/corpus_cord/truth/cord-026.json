@@ -1,0 +1,29 @@
+{
+  "line_items": [
+    {
+      "description": "Nasi Cap Cay Porsi B esar",
+      "quantity": "1",
+      "unit_price": "65.000",
+      "amount": "65.000"
+    },
+    {
+      "description": "Teh Tawar",
+      "quantity": "2",
+      "unit_price": "4.000",
+      "amount": null
+    },
+    {
+      "description": "Fu Yung Hai",
+      "quantity": "1",
+      "unit_price": "65.000",
+      "amount": "65.000"
+    }
+  ],
+  "totals": {
+    "subtotal": "Rp 138.000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "Rp 138.000"
+  }
+}

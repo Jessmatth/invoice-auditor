@@ -1,0 +1,47 @@
+{
+  "line_items": [
+    {
+      "description": "CHOCO PUFF",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "29,091"
+    },
+    {
+      "description": "CREAMY BEEF CLS FTC",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "42,727"
+    },
+    {
+      "description": "NEW ORIENTAL CHK RICE",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "34,545"
+    },
+    {
+      "description": "LIPTON PITCHER",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "54,545"
+    },
+    {
+      "description": "SC/P SUPER SUPREME",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "47,273"
+    },
+    {
+      "description": "CB/P BLACK PEPP BEEF",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "48,182"
+    }
+  ],
+  "totals": {
+    "subtotal": "256,363",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "25,637",
+    "total": "282,000"
+  }
+}

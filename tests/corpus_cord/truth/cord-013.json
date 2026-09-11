@@ -1,0 +1,26 @@
+{
+  "line_items": [
+    {
+      "description": "BASO KUAH",
+      "quantity": "1",
+      "unit_price": "43.636",
+      "amount": "43.636"
+    },
+    {
+      "description": "A.MINERAL GELAS",
+      "quantity": "1",
+      "unit_price": "3,000",
+      "amount": "3,000"
+    }
+  ],
+  "totals": {
+    "subtotal": [
+      "46.636",
+      "46.636"
+    ],
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "4.664",
+    "total": "51.300"
+  }
+}

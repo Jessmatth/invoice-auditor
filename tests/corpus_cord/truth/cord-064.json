@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "SINGLE SCOOP",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "16.000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "16.000"
+  }
+}

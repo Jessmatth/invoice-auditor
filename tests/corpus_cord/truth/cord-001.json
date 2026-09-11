@@ -1,0 +1,29 @@
+{
+  "line_items": [
+    {
+      "description": "J.STB PROMO",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "17500"
+    },
+    {
+      "description": "Y.B.BAT",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "46000"
+    },
+    {
+      "description": "Y.BASO PROM",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "27500"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "91000"
+  }
+}

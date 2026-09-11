@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "TRAD KY TOAST CARTE",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "28.182"
+    }
+  ],
+  "totals": {
+    "subtotal": "28.182",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "2.818",
+    "total": "31.000"
+  }
+}

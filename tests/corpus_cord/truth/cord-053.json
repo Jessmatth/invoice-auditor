@@ -1,0 +1,29 @@
+{
+  "line_items": [
+    {
+      "description": "Pecel Komplit + Nasi",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "42.000"
+    },
+    {
+      "description": "SOTO KUDUS",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "47.000"
+    },
+    {
+      "description": "Mineral Water",
+      "quantity": "2",
+      "unit_price": null,
+      "amount": "18.000"
+    }
+  ],
+  "totals": {
+    "subtotal": "107.000",
+    "discount_price": null,
+    "service_charge": "5.350",
+    "tax_amount": "11.235",
+    "total": "123.585"
+  }
+}

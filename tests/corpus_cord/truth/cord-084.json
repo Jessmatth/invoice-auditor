@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "Kroket",
+      "quantity": "1x",
+      "unit_price": "@ 12.000",
+      "amount": "12.000"
+    },
+    {
+      "description": "Arem Arem",
+      "quantity": "2x",
+      "unit_price": "@ 12.000",
+      "amount": "24.000"
+    }
+  ],
+  "totals": {
+    "subtotal": "Rp 36.000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "Rp 3.600",
+    "total": "Rp 39.600"
+  }
+}

@@ -160,12 +160,90 @@ which is why a document-level `net + tax = gross` behaves the same whether the t
 is 10% VAT, two VAT rates, or Ohio sales tax. Worth stating that this was verified
 rather than assumed: the uniform corpus could not have revealed a rate-specific bug.
 
+## 6. A second corpus: real photographed receipts
+
+The synthetic corpus cannot show what real documents do. CORD (`naver-clova-ix/cord-v2`,
+test split) is the opposite of it in every way that matters: 100 photographed
+Indonesian receipts, Rupiah, no VAT column, service charges, discounts, and both
+`,` and `.` used as thousands separators in the same corpus.
+
+```bash
+python3 scripts/fetch_cord.py
+python3 scripts/verify.py --dir tests/corpus_cord/truth
+```
+
+| | Synthetic corpus | CORD |
+|---|---|---|
+| Documents | 76 | 100 |
+| Clean | 73 | 83 |
+| Flagged | 2 | 15 |
+| Unverifiable | 1 | 2 |
+| Check pass rate | 99.7% | 93.2% |
+
+Real documents are messier, and the gap is the honest part of this table.
+
+### Two real defects it found in the tool
+
+**A parser bug worth 3 orders of magnitude.** `Rp. 111,000` parsed to `111.000`.
+The currency stripper removed `Rp` and the space but left the period from the
+abbreviation, producing `.111,000`, which the separator heuristic then read as a
+European decimal. Silently dividing an amount by 1000 is exactly the error class
+this tool exists to catch. Fixed, and `scripts/test_parsing.py` now covers 30 cases.
+
+**Tax-inclusive line pricing.** 30 of the 100 receipts quote line prices *after*
+tax, so the lines sum to the grand total rather than the pre-tax subtotal. The
+verifier assumed tax-exclusive pricing universally and reported a false mismatch
+on every one of them. It now accepts whichever convention reconciles and records
+which. That change moved CORD from 67 clean to 83, and moved 18 documents out of
+`unverifiable`.
+
+Neither defect was visible in the synthetic corpus, because a single generator
+producing one layout cannot disagree with itself.
+
+### What the remaining 15 flags are
+
+Not all of them are errors in the receipts. CORD's `subtotal_price` is sometimes a
+pre-tax base while the line prices are rounded menu prices, so the two legitimately
+differ by rounding. Some are genuine annotation noise. This is remapped third-party
+ground truth and the mapping in `scripts/fetch_cord.py` is a best reading of their
+schema, not an authority. Treat 93.2% as a floor for a real corpus rather than a
+verdict on the receipts.
+
+## 7. Sales tax and US state brackets
+
+A VAT invoice states a rate on every line, which gives a second independent route
+to each net amount. US sales tax is a single document-level number with nothing
+behind it, so `subtotal + tax = total` confirms internal consistency and says
+nothing about whether the rate is right.
+
+| | VAT invoice (2 lines) | Sales-tax invoice (2 lines) |
+|---|---|---|
+| Checks run | 9 | 4 |
+| Tax inflated, total adjusted | caught | passes clean |
+
+Three ways to close that gap, in order of how much the user has to supply:
+
+1. **Nothing.** The audit reports the effective rate and warns that it is
+   uncorroborated, rather than quietly reporting clean.
+2. **`--state TX`.** Checks the effective rate against that state's maximum possible
+   combined rate, from `references/us_sales_tax_rates.json` (Tax Foundation, effective
+   2026-01-01). The ceiling is a hard bound, so exceeding it is an error. A rate
+   *below* the state rate is only a warning, because exempt lines legitimately drag
+   the effective rate down.
+3. **`--expect-rate 8.25%`.** The known rate for the address, checked exactly.
+
+There are over 13,000 US sales-tax jurisdictions and rates change quarterly, so the
+state table gives a bracket and never a point. It says a 14.4% charge cannot be
+California. It cannot say what San Jose owes today.
+
 ## Honest summary
 
 - 0 false positives on 76 synthetic invoices from a single template family
+- 83 of 100 real photographed receipts reconcile cleanly; 93.2% of checks pass
 - 100% detection across 583 planted arithmetic errors
 - 0 detection below the 1-cent tolerance floor
 - 0 detection on the three corruption classes arithmetic cannot reach
 - 8 of 8 invoice shapes outside the corpus handled correctly
 - 2 real annotation errors found in a public dataset, unprompted
-- The corpus is the weakest part of this evaluation: one generator, one tax rate, three templates
+- 2 real defects in the tool, both found by the real corpus and invisible in the synthetic one
+- US sales tax gets roughly half the coverage of VAT, and the tool now says so

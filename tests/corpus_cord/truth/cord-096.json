@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "BBQ Chicken",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "41,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "41,000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "41,000"
+  }
+}

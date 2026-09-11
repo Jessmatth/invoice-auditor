@@ -1,0 +1,374 @@
+{
+  "source": "Tax Foundation, State and Local Sales Tax Rates, 2026",
+  "source_url": "https://taxfoundation.org/data/all/state/sales-tax-rates/",
+  "effective_date": "2026-01-01",
+  "retrieved": "2026-09-10",
+  "units": "percent",
+  "caveats": [
+    "There are over 13,000 US sales-tax jurisdictions. State plus maximum local gives a hard ceiling for a state, not the rate owed at a given address.",
+    "max_local_rate is the highest local rate observed in the state, so max_combined is an upper bound that few addresses actually reach.",
+    "Product taxability varies by state (groceries, clothing, prescription drugs, SaaS). A partly exempt invoice legitimately produces an effective rate below the state rate, which is why a low rate is a warning and never an error.",
+    "Rates change, often quarterly. Check effective_date before relying on this.",
+    "Alaska has no state sales tax but local rates up to 7.85%."
+  ],
+  "states": {
+    "AL": {
+      "name": "Alabama",
+      "state_rate": 4.0,
+      "max_local_rate": 11.0,
+      "max_combined": 15.0,
+      "min_expected": 4.0
+    },
+    "AK": {
+      "name": "Alaska",
+      "state_rate": 0.0,
+      "max_local_rate": 7.85,
+      "max_combined": 7.85,
+      "min_expected": 0.0
+    },
+    "AZ": {
+      "name": "Arizona",
+      "state_rate": 5.6,
+      "max_local_rate": 5.3,
+      "max_combined": 10.9,
+      "min_expected": 5.6
+    },
+    "AR": {
+      "name": "Arkansas",
+      "state_rate": 6.5,
+      "max_local_rate": 6.125,
+      "max_combined": 12.625,
+      "min_expected": 6.5
+    },
+    "CA": {
+      "name": "California",
+      "state_rate": 7.25,
+      "max_local_rate": 5.25,
+      "max_combined": 12.5,
+      "min_expected": 7.25
+    },
+    "CO": {
+      "name": "Colorado",
+      "state_rate": 2.9,
+      "max_local_rate": 9.1,
+      "max_combined": 12.0,
+      "min_expected": 2.9
+    },
+    "CT": {
+      "name": "Connecticut",
+      "state_rate": 6.35,
+      "max_local_rate": 0.0,
+      "max_combined": 6.35,
+      "min_expected": 6.35
+    },
+    "DE": {
+      "name": "Delaware",
+      "state_rate": 0.0,
+      "max_local_rate": 0.0,
+      "max_combined": 0.0,
+      "min_expected": 0.0
+    },
+    "FL": {
+      "name": "Florida",
+      "state_rate": 6.0,
+      "max_local_rate": 2.0,
+      "max_combined": 8.0,
+      "min_expected": 6.0
+    },
+    "GA": {
+      "name": "Georgia",
+      "state_rate": 4.0,
+      "max_local_rate": 5.0,
+      "max_combined": 9.0,
+      "min_expected": 4.0
+    },
+    "HI": {
+      "name": "Hawaii",
+      "state_rate": 4.0,
+      "max_local_rate": 0.5,
+      "max_combined": 4.5,
+      "min_expected": 4.0
+    },
+    "ID": {
+      "name": "Idaho",
+      "state_rate": 6.0,
+      "max_local_rate": 3.0,
+      "max_combined": 9.0,
+      "min_expected": 6.0
+    },
+    "IL": {
+      "name": "Illinois",
+      "state_rate": 6.25,
+      "max_local_rate": 4.75,
+      "max_combined": 11.0,
+      "min_expected": 6.25
+    },
+    "IN": {
+      "name": "Indiana",
+      "state_rate": 7.0,
+      "max_local_rate": 0.0,
+      "max_combined": 7.0,
+      "min_expected": 7.0
+    },
+    "IA": {
+      "name": "Iowa",
+      "state_rate": 6.0,
+      "max_local_rate": 2.0,
+      "max_combined": 8.0,
+      "min_expected": 6.0
+    },
+    "KS": {
+      "name": "Kansas",
+      "state_rate": 6.5,
+      "max_local_rate": 4.25,
+      "max_combined": 10.75,
+      "min_expected": 6.5
+    },
+    "KY": {
+      "name": "Kentucky",
+      "state_rate": 6.0,
+      "max_local_rate": 0.0,
+      "max_combined": 6.0,
+      "min_expected": 6.0
+    },
+    "LA": {
+      "name": "Louisiana",
+      "state_rate": 5.0,
+      "max_local_rate": 7.0,
+      "max_combined": 12.0,
+      "min_expected": 5.0
+    },
+    "ME": {
+      "name": "Maine",
+      "state_rate": 5.5,
+      "max_local_rate": 0.0,
+      "max_combined": 5.5,
+      "min_expected": 5.5
+    },
+    "MD": {
+      "name": "Maryland",
+      "state_rate": 6.0,
+      "max_local_rate": 0.0,
+      "max_combined": 6.0,
+      "min_expected": 6.0
+    },
+    "MA": {
+      "name": "Massachusetts",
+      "state_rate": 6.25,
+      "max_local_rate": 0.0,
+      "max_combined": 6.25,
+      "min_expected": 6.25
+    },
+    "MI": {
+      "name": "Michigan",
+      "state_rate": 6.0,
+      "max_local_rate": 0.0,
+      "max_combined": 6.0,
+      "min_expected": 6.0
+    },
+    "MN": {
+      "name": "Minnesota",
+      "state_rate": 6.875,
+      "max_local_rate": 3.0,
+      "max_combined": 9.875,
+      "min_expected": 6.875
+    },
+    "MS": {
+      "name": "Mississippi",
+      "state_rate": 7.0,
+      "max_local_rate": 1.0,
+      "max_combined": 8.0,
+      "min_expected": 7.0
+    },
+    "MO": {
+      "name": "Missouri",
+      "state_rate": 4.225,
+      "max_local_rate": 5.763,
+      "max_combined": 9.988,
+      "min_expected": 4.225
+    },
+    "MT": {
+      "name": "Montana",
+      "state_rate": 0.0,
+      "max_local_rate": 0.0,
+      "max_combined": 0.0,
+      "min_expected": 0.0
+    },
+    "NE": {
+      "name": "Nebraska",
+      "state_rate": 5.5,
+      "max_local_rate": 2.0,
+      "max_combined": 7.5,
+      "min_expected": 5.5
+    },
+    "NV": {
+      "name": "Nevada",
+      "state_rate": 6.85,
+      "max_local_rate": 1.525,
+      "max_combined": 8.375,
+      "min_expected": 6.85
+    },
+    "NH": {
+      "name": "New Hampshire",
+      "state_rate": 0.0,
+      "max_local_rate": 0.0,
+      "max_combined": 0.0,
+      "min_expected": 0.0
+    },
+    "NJ": {
+      "name": "New Jersey",
+      "state_rate": 6.625,
+      "max_local_rate": 3.313,
+      "max_combined": 9.938,
+      "min_expected": 3.3125,
+      "note": "Urban Enterprise Zones charge half the state rate"
+    },
+    "NM": {
+      "name": "New Mexico",
+      "state_rate": 4.875,
+      "max_local_rate": 4.5625,
+      "max_combined": 9.4375,
+      "min_expected": 4.875
+    },
+    "NY": {
+      "name": "New York",
+      "state_rate": 4.0,
+      "max_local_rate": 4.875,
+      "max_combined": 8.875,
+      "min_expected": 4.0
+    },
+    "NC": {
+      "name": "North Carolina",
+      "state_rate": 4.75,
+      "max_local_rate": 2.75,
+      "max_combined": 7.5,
+      "min_expected": 4.75
+    },
+    "ND": {
+      "name": "North Dakota",
+      "state_rate": 5.0,
+      "max_local_rate": 3.75,
+      "max_combined": 8.75,
+      "min_expected": 5.0
+    },
+    "OH": {
+      "name": "Ohio",
+      "state_rate": 5.75,
+      "max_local_rate": 2.25,
+      "max_combined": 8.0,
+      "min_expected": 5.75
+    },
+    "OK": {
+      "name": "Oklahoma",
+      "state_rate": 4.5,
+      "max_local_rate": 7.0,
+      "max_combined": 11.5,
+      "min_expected": 4.5
+    },
+    "OR": {
+      "name": "Oregon",
+      "state_rate": 0.0,
+      "max_local_rate": 0.0,
+      "max_combined": 0.0,
+      "min_expected": 0.0
+    },
+    "PA": {
+      "name": "Pennsylvania",
+      "state_rate": 6.0,
+      "max_local_rate": 2.0,
+      "max_combined": 8.0,
+      "min_expected": 6.0
+    },
+    "RI": {
+      "name": "Rhode Island",
+      "state_rate": 7.0,
+      "max_local_rate": 0.0,
+      "max_combined": 7.0,
+      "min_expected": 7.0
+    },
+    "SC": {
+      "name": "South Carolina",
+      "state_rate": 6.0,
+      "max_local_rate": 3.0,
+      "max_combined": 9.0,
+      "min_expected": 6.0
+    },
+    "SD": {
+      "name": "South Dakota",
+      "state_rate": 4.2,
+      "max_local_rate": 4.5,
+      "max_combined": 8.7,
+      "min_expected": 4.2
+    },
+    "TN": {
+      "name": "Tennessee",
+      "state_rate": 7.0,
+      "max_local_rate": 2.75,
+      "max_combined": 9.75,
+      "min_expected": 7.0
+    },
+    "TX": {
+      "name": "Texas",
+      "state_rate": 6.25,
+      "max_local_rate": 2.0,
+      "max_combined": 8.25,
+      "min_expected": 6.25
+    },
+    "UT": {
+      "name": "Utah",
+      "state_rate": 6.1,
+      "max_local_rate": 4.7,
+      "max_combined": 10.8,
+      "min_expected": 6.1
+    },
+    "VT": {
+      "name": "Vermont",
+      "state_rate": 6.0,
+      "max_local_rate": 1.0,
+      "max_combined": 7.0,
+      "min_expected": 6.0
+    },
+    "VA": {
+      "name": "Virginia",
+      "state_rate": 5.3,
+      "max_local_rate": 2.7,
+      "max_combined": 8.0,
+      "min_expected": 5.3
+    },
+    "WA": {
+      "name": "Washington",
+      "state_rate": 6.5,
+      "max_local_rate": 4.1,
+      "max_combined": 10.6,
+      "min_expected": 6.5
+    },
+    "WV": {
+      "name": "West Virginia",
+      "state_rate": 6.0,
+      "max_local_rate": 1.0,
+      "max_combined": 7.0,
+      "min_expected": 6.0
+    },
+    "WI": {
+      "name": "Wisconsin",
+      "state_rate": 5.0,
+      "max_local_rate": 2.9,
+      "max_combined": 7.9,
+      "min_expected": 5.0
+    },
+    "WY": {
+      "name": "Wyoming",
+      "state_rate": 4.0,
+      "max_local_rate": 3.0,
+      "max_combined": 7.0,
+      "min_expected": 4.0
+    },
+    "DC": {
+      "name": "District of Columbia",
+      "state_rate": 6.0,
+      "max_local_rate": 0.0,
+      "max_combined": 6.0,
+      "min_expected": 6.0
+    }
+  }
+}

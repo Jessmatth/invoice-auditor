@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "Popcorn Salt (S)",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "20.000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": null
+  }
+}

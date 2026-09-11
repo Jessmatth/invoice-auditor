@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "XXI Java Tea (M)",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "18.000"
+    },
+    {
+      "description": "Combo 2",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "30.000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "48.000"
+  }
+}

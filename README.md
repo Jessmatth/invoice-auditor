@@ -36,7 +36,8 @@ corpus composition and reproduction in [EVALUATION.md](EVALUATION.md).
 | Planted arithmetic errors caught | **583 / 583** |
 | Smallest error reliably caught | **5 cents** |
 | Real annotation errors found in the public dataset | **2** |
-| Invoice shapes outside the corpus, hand-verified | **8 / 8** |
+| Invoice shapes outside the corpus, hand-verified | **13 / 13** |
+| Real photographed receipts reconciling cleanly | **83 / 100** |
 
 That last row is the one worth dwelling on. Running the audit over the ground truth
 of a public dataset used to train extraction models surfaced two mislabeled records
@@ -74,9 +75,13 @@ standard library.
 ## Use directly
 
 ```bash
-python3 scripts/verify.py extracted.json          # audit one extraction
-python3 scripts/verify.py --dir out/ --json       # audit a batch
-python3 scripts/evaluate.py --seed 7              # reproduce the evaluation
+python3 scripts/verify.py extracted.json              # audit one extraction
+python3 scripts/verify.py --dir out/ --json           # audit a batch
+python3 scripts/verify.py inv.json --state TX         # check tax against Texas brackets
+python3 scripts/verify.py inv.json --expect-rate 8.25%  # check against a known rate
+python3 scripts/evaluate.py --seed 7                  # reproduce the evaluation
+python3 scripts/test_shapes.py                        # invoice shapes beyond the corpus
+python3 scripts/test_parsing.py                       # number parsing regressions
 ```
 
 ## Layout

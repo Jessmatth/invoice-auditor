@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "PHO BO TAI",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "55,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "55,000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "5,500",
+    "total": "60,500"
+  }
+}

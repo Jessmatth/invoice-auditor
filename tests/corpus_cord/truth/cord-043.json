@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "Cheese Tart",
+      "quantity": "6",
+      "unit_price": null,
+      "amount": "165000.00"
+    }
+  ],
+  "totals": {
+    "subtotal": "Rp 165000.00",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "Rp 15000.00",
+    "total": "Rp 165000.00"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "Cuka Apel Tetes",
+      "quantity": "1",
+      "unit_price": "198000",
+      "amount": "198000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "198000"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "line_items": [
+    {
+      "description": "Tahu Isi",
+      "quantity": "2",
+      "unit_price": null,
+      "amount": "78,000"
+    },
+    {
+      "description": "Tea",
+      "quantity": "5",
+      "unit_price": null,
+      "amount": "30,000"
+    },
+    {
+      "description": "Kepiting 7-8.4ons - Chilly 0.7 1",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "297,490"
+    },
+    {
+      "description": "Udang Telur Asin - Regular",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "47,500"
+    },
+    {
+      "description": "Kailan 2 Rasa",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "45,000"
+    },
+    {
+      "description": "Mantau - 2 pcs",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "25,000"
+    },
+    {
+      "description": "Sweet Tea",
+      "quantity": "2",
+      "unit_price": null,
+      "amount": "16,000"
+    },
+    {
+      "description": "Nasi Putih",
+      "quantity": "7",
+      "unit_price": null,
+      "amount": "42,000"
+    },
+    {
+      "description": "Mantau - 3 pcs",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "37,500"
+    }
+  ],
+  "totals": {
+    "subtotal": "618,490",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "61,849",
+    "total": "680,500"
+  }
+}

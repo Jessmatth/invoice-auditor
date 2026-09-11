@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "-TICKET CP",
+      "quantity": "2",
+      "unit_price": null,
+      "amount": "60.000"
+    }
+  ],
+  "totals": {
+    "subtotal": "60.000",
+    "discount_price": "-60.000",
+    "service_charge": null,
+    "tax_amount": "5.455",
+    "total": "60.000"
+  }
+}

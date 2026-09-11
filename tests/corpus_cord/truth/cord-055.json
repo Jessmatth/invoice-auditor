@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "APPLE CINNAMON PASTRY",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "22,000"
+    },
+    {
+      "description": "ROYAL CHEESE TART",
+      "quantity": "2",
+      "unit_price": null,
+      "amount": "32,000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "54,000"
+  }
+}

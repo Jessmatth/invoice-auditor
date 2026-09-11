@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "NASI GOR SFD TLR",
+      "quantity": "1",
+      "unit_price": "35.000",
+      "amount": "Rp 35.000"
+    },
+    {
+      "description": "ES TEH TAWAR",
+      "quantity": "1",
+      "unit_price": "3.000",
+      "amount": "Rp 3.000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "Rp 38.000"
+  }
+}

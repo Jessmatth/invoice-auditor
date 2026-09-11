@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "Kopi Susu Kampung.",
+      "quantity": "x1",
+      "unit_price": null,
+      "amount": "19.000"
+    },
+    {
+      "description": "Kopi Susu Kampung.",
+      "quantity": "x2",
+      "unit_price": null,
+      "amount": "38.000"
+    }
+  ],
+  "totals": {
+    "subtotal": "57.000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "57.000"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "Snack Lestari All",
+      "quantity": "2",
+      "unit_price": "27,000",
+      "amount": "54,000"
+    },
+    {
+      "description": "Bakery Aneka Sisir Banana,Pizza,yoko,Mar mer,Daging,abon,keju,cokelat,dll",
+      "quantity": "2",
+      "unit_price": "7,000",
+      "amount": "14,000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "68,000"
+  }
+}

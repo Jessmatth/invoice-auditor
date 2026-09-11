@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "TWIST DONUT",
+      "quantity": "6",
+      "unit_price": null,
+      "amount": "54,000"
+    },
+    {
+      "description": "REDBEAN BREAD",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "9,000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "63,000"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "TRIPPLE CHEESE",
+      "quantity": "1 x",
+      "unit_price": "17,000",
+      "amount": "17,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "17,000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "17,000"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "[LG] BLACK SAKURA",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "59,091"
+    },
+    {
+      "description": "IVINERAL WATER (bundling) 5k",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "4,545"
+    }
+  ],
+  "totals": {
+    "subtotal": "63,636",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "6,364",
+    "total": "70,000"
+  }
+}

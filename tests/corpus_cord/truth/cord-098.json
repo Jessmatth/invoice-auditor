@@ -1,0 +1,29 @@
+{
+  "line_items": [
+    {
+      "description": "BLACK PAPPER MEATBALL PAS",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "79,000"
+    },
+    {
+      "description": "TRUFFLE CREAM",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "77,000"
+    },
+    {
+      "description": "EARL GREY MILK TEA",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "59,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "215,000",
+    "discount_price": null,
+    "service_charge": "12,900",
+    "tax_amount": "22,790",
+    "total": "250,690"
+  }
+}

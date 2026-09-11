@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "PILLOW DURIA",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "36,364"
+    },
+    {
+      "description": "PLASTIK 25",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "0"
+    }
+  ],
+  "totals": {
+    "subtotal": "36,364",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "3,636",
+    "total": "40,000"
+  }
+}

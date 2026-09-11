@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "CHEESE JOHN",
+      "quantity": "x1",
+      "unit_price": "9.500,00",
+      "amount": "9.500,00"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "9.500,00"
+  }
+}

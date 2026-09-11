@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "AIR MINERAL",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "8,181"
+    }
+  ],
+  "totals": {
+    "subtotal": "8,181",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "818",
+    "total": "8,999"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "line_items": [
+    {
+      "description": "LUNCH BOX 3P SET W/RED BAG & SP00 N.",
+      "quantity": "8",
+      "unit_price": "243,000",
+      "amount": "1,944,000"
+    },
+    {
+      "description": "RICE CASE 7L W/CUP",
+      "quantity": "5",
+      "unit_price": "195,000",
+      "amount": "975,000"
+    },
+    {
+      "description": "LUNCH BOX 3P SET W/BLACK BAG & SP OON",
+      "quantity": "4",
+      "unit_price": "243,000",
+      "amount": "972,000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": null
+  }
+}

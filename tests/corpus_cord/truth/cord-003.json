@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "DONAT GULA",
+      "quantity": "1X",
+      "unit_price": "@11000",
+      "amount": "11,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "11,000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "11,000"
+  }
+}

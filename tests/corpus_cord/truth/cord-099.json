@@ -1,0 +1,20 @@
+{
+  "line_items": [
+    {
+      "description": "FL-Xmas 30 Off",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "68,180"
+    }
+  ],
+  "totals": {
+    "subtotal": "68,180",
+    "discount_price": "0",
+    "service_charge": null,
+    "tax_amount": [
+      "6,818",
+      "0"
+    ],
+    "total": "75,000"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "SALMON PESTO",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "85,500"
+    },
+    {
+      "description": "SALMON PESTO",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "85,500"
+    }
+  ],
+  "totals": {
+    "subtotal": "85,500",
+    "discount_price": null,
+    "service_charge": "10,260",
+    "tax_amount": "18,126",
+    "total": "113,886"
+  }
+}

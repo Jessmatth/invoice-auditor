@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "ICED TT",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "20,000"
+    },
+    {
+      "description": "ICED GT",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "22,000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": null
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "COOKIES AND CREAM",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "20,909"
+    }
+  ],
+  "totals": {
+    "subtotal": "20,909",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "2,091",
+    "total": "23,000"
+  }
+}

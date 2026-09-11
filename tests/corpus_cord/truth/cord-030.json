@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "Kupon 3",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "28,636"
+    }
+  ],
+  "totals": {
+    "subtotal": "28,636",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "2,864",
+    "total": "31,500"
+  }
+}

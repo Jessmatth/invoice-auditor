@@ -1,0 +1,47 @@
+{
+  "line_items": [
+    {
+      "description": "RedVelvet Cheese Slc",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "38,000"
+    },
+    {
+      "description": "Chicken Baked Rice",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "55,000"
+    },
+    {
+      "description": "Fish n Chips",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "65,000"
+    },
+    {
+      "description": "Mushroom Soup",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "35,000"
+    },
+    {
+      "description": "Chamomile",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "25,000"
+    },
+    {
+      "description": "Iced Tea",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "20,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "238,000",
+    "discount_price": null,
+    "service_charge": "17,850",
+    "tax_amount": "25,585",
+    "total": "281,435"
+  }
+}

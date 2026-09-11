@@ -1,0 +1,29 @@
+{
+  "line_items": [
+    {
+      "description": "5001-Corn Flakes Cookies",
+      "quantity": "x1",
+      "unit_price": "Rp.56.000",
+      "amount": "Rp.56.000"
+    },
+    {
+      "description": "5003-Chokoreto Cookies",
+      "quantity": "x1",
+      "unit_price": "Rp.62.000",
+      "amount": "Rp.62.000"
+    },
+    {
+      "description": "6002-Plastic Bag Medium",
+      "quantity": "x1",
+      "unit_price": "Rp.0",
+      "amount": "Rp.0"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "Rp.118.000"
+  }
+}

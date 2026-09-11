@@ -18,11 +18,11 @@ Usage:
     python3 verify.py --dir path/ [--json]
 """
 from __future__ import annotations
-import argparse, glob, json, re, sys
+import argparse, glob, json, os, re, sys
 from dataclasses import dataclass, asdict, field
 from decimal import Decimal, InvalidOperation
 
-__version__ = "3.0"
+__version__ = "4.2"
 
 # ---------------------------------------------------------------- numbers --
 
@@ -69,6 +69,22 @@ def parse_rate(raw):
     if v is None:
         return None
     return v / Decimal(100) if ("%" in str(raw) or v > 1) else v
+
+# ------------------------------------------------------------ rate table --
+
+_RATES_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                           "references", "us_sales_tax_rates.json")
+_RATES = None
+
+def us_rates():
+    """US state sales-tax brackets, loaded lazily. Returns None if unavailable."""
+    global _RATES
+    if _RATES is None:
+        try:
+            _RATES = json.load(open(_RATES_PATH))
+        except Exception:
+            _RATES = {}
+    return _RATES or None
 
 # ---------------------------------------------------------------- results --
 
@@ -199,7 +215,7 @@ def audit_line(it, i, a):
     return net, gross
 
 
-def audit(doc, doc_id=None, expect_rate=None):
+def audit(doc, doc_id=None, expect_rate=None, state=None):
     doc = doc.get("gt_parse", doc)
     a = Audit(doc_id=doc_id)
     items   = doc.get("items") or doc.get("line_items") or []
@@ -222,12 +238,28 @@ def audit(doc, doc_id=None, expect_rate=None):
     n_terms = max(1, len(items)) + 1
     complete = len(nets) == len(items) and len(items) > 0
 
-    if complete and t_net is not None:
+    # Line prices may be quoted before tax (lines sum to the subtotal) or after
+    # it (lines sum to the grand total). Retail in much of Asia and Europe does
+    # the latter. Assuming one convention reports a false mismatch on the other,
+    # so accept whichever reconciles and record which it was.
+    pricing = None
+    if complete and (t_net is not None or t_gross is not None):
         exp = sum(nets)
-        check(close(exp, t_net, tol(n_terms)), Finding(
-            "D1_net_total", "error", "total_net_worth",
-            "line net amounts do not sum to the stated net total",
-            fmt(exp), fmt(t_net), fmt(t_net - exp)))
+        fits_sub = t_net   is not None and close(exp, t_net,   tol(n_terms))
+        fits_tot = t_gross is not None and close(exp, t_gross, tol(n_terms))
+        if fits_sub:
+            pricing = "tax_exclusive"
+            a.checks_run += 1; a.checks_passed += 1
+        elif fits_tot:
+            pricing = "tax_inclusive"
+            a.checks_run += 1; a.checks_passed += 1
+        else:
+            target, label = ((t_net, "net total") if t_net is not None
+                             else (t_gross, "gross total"))
+            check(False, Finding(
+                "D1_net_total", "error", "total_net_worth",
+                f"line amounts sum to neither the stated {label} nor the grand total",
+                fmt(exp), fmt(target), fmt(target - exp)))
     elif t_net is not None and items:
         a.findings.append(Finding(
             "D4_total_unverifiable", "warning", "total_net_worth",
@@ -241,12 +273,34 @@ def audit(doc, doc_id=None, expect_rate=None):
             "line gross amounts do not sum to the stated gross total",
             fmt(exp), fmt(t_gross), fmt(t_gross - exp)))
 
-    if None not in (t_net, t_vat, t_gross):
-        exp = t_net + t_vat
-        check(close(exp, t_gross, tol(2)), Finding(
-            "D3_total_identity", "error", "total_gross_worth",
-            "net total plus VAT total does not equal the gross total",
-            fmt(exp), fmt(t_gross), fmt(t_gross - exp)))
+    # A real receipt rarely goes straight from subtotal to total. Discounts and
+    # service charges sit in between, and a checker that ignores them reports a
+    # false mismatch on every discounted document.
+    t_disc = parse_amount(summary.get("discount_price") or summary.get("discount")
+                          or summary.get("total_discount"))
+    t_svc  = parse_amount(summary.get("service_price") or summary.get("service_charge")
+                          or summary.get("etc"))
+
+    if t_net is not None and t_gross is not None:
+        # A discount may be written as a positive magnitude to subtract or as a
+        # negative adjustment. Both mean the same thing, so normalise.
+        parts, names = [], []
+        if t_disc is not None: parts.append(-abs(t_disc));  names.append("less discount")
+        if t_svc  is not None: parts.append(t_svc);         names.append("plus service charge")
+        if t_vat  is not None: parts.append(t_vat);         names.append("plus tax")
+        exp = t_net + sum(parts)
+
+        if parts or t_net == t_gross:
+            desc = ", ".join(["net total"] + names) if names else "net total"
+            check(close(exp, t_gross, tol(2 + len(parts))), Finding(
+                "D3_total_identity", "error", "total_gross_worth",
+                f"{desc} does not equal the gross total",
+                fmt(exp), fmt(t_gross), fmt(t_gross - exp)))
+        else:
+            a.findings.append(Finding(
+                "D5_unexplained_gap", "warning", "total_gross_worth",
+                f"net total and gross total differ by {fmt(t_gross - t_net)} and no tax, "
+                f"discount or service charge was captured to account for it"))
 
     # ---- tax model ------------------------------------------------------
     # VAT puts a rate on every line, which gives a second independent route to
@@ -259,14 +313,17 @@ def audit(doc, doc_id=None, expect_rate=None):
     doc_rate = parse_rate(summary.get("vat_rate") or summary.get("tax_rate")
                           or summary.get("rate"))
     eff = None
-    if t_net not in (None, 0) and t_vat is not None:
-        eff = (t_vat / t_net)
+    taxable_base = None
+    if t_net is not None:
+        taxable_base = t_net - (abs(t_disc) if t_disc is not None else Decimal(0))
+    if taxable_base not in (None, 0) and t_vat is not None:
+        eff = (t_vat / taxable_base)
 
     if items and len(rated) == len(items):
         model, checked = "per_line_rate", True
     elif doc_rate is not None:
         model, checked = "document_rate", True
-        exp = t_net * (Decimal(1) + doc_rate) if t_net is not None else None
+        exp = taxable_base * (Decimal(1) + doc_rate) if taxable_base is not None else None
         if exp is not None and t_gross is not None:
             check(close(exp, t_gross, tol(2)), Finding(
                 "T1_document_rate", "error", "total_gross_worth",
@@ -281,13 +338,41 @@ def audit(doc, doc_id=None, expect_rate=None):
     if model == "document_amount":
         if expect_rate is not None:
             er = parse_rate(expect_rate)
-            exp = (t_net * er) if t_net is not None else None
+            exp = (taxable_base * er) if taxable_base is not None else None
             if exp is not None:
                 checked = True
                 check(close(exp, t_vat, tol(2)), Finding(
                     "T2_expected_rate", "error", "tax_amount",
                     f"tax does not match the expected rate of {er*100:.4g}%",
                     fmt(exp), fmt(t_vat), fmt(t_vat - exp)))
+        elif state is not None and eff is not None:
+            tbl = us_rates()
+            info = (tbl or {}).get("states", {}).get(str(state).upper())
+            if info is None:
+                a.findings.append(Finding(
+                    "T5_unknown_state", "warning", "tax_amount",
+                    f"no sales-tax bracket on file for state {state!r}"))
+            else:
+                pct = eff * Decimal(100)
+                ceiling = Decimal(str(info["max_combined"]))
+                floor   = Decimal(str(info["min_expected"]))
+                checked = True
+                # The ceiling is a hard bound: no address in the state can
+                # legally exceed state rate plus the highest local rate.
+                check(pct <= ceiling + Decimal("0.01"), Finding(
+                    "T4_above_state_ceiling", "error", "tax_amount",
+                    f"effective tax rate of {pct:.4g}% exceeds the maximum possible "
+                    f"combined rate in {info['name']} ({ceiling}% = {info['state_rate']}% state "
+                    f"plus up to {info['max_local_rate']}% local)",
+                    f"<= {ceiling}%", f"{pct:.4g}%", None))
+                # The floor is not a bound: exempt lines legitimately drag the
+                # effective rate down, so this can only ever be a warning.
+                if pct < floor - Decimal("0.01"):
+                    a.findings.append(Finding(
+                        "T6_below_state_floor", "warning", "tax_amount",
+                        f"effective tax rate of {pct:.4g}% is below the {info['name']} state "
+                        f"rate of {floor}%. Legitimate if some lines are exempt, worth a look "
+                        f"if they are not"))
         else:
             a.findings.append(Finding(
                 "T3_tax_uncorroborated", "warning", "tax_amount",
@@ -298,6 +383,7 @@ def audit(doc, doc_id=None, expect_rate=None):
                 + ". Pass --expect-rate to check it."))
 
     a.tax = {
+        "line_pricing": pricing,
         "model": model,
         "rate_verified": checked,
         "effective_rate": (f"{eff*100:.4g}%" if eff is not None else None),
@@ -325,6 +411,9 @@ def main():
     ap.add_argument("--glob", default="*.json")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--quiet", action="store_true", help="summary line only")
+    ap.add_argument("--state", metavar="XX",
+                    help="two-letter US state code. Checks the effective tax rate against "
+                         "that state's maximum possible combined rate.")
     ap.add_argument("--expect-rate", metavar="R",
                     help="known tax rate for this jurisdiction, e.g. 8.25%% or 0.0825. "
                          "Turns an unverifiable document-level tax amount into a real check.")
@@ -337,7 +426,7 @@ def main():
         ap.error("no input files")
 
     results = [audit(json.load(open(p)), p.split("/")[-1].rsplit(".", 1)[0],
-                     expect_rate=args.expect_rate).to_dict() for p in paths]
+                     expect_rate=args.expect_rate, state=args.state).to_dict() for p in paths]
 
     if args.json:
         print(json.dumps(results, indent=2)); return
@@ -364,7 +453,8 @@ def main():
     models = {}
     for r in results:
         models[r["tax"].get("model", "none")] = models.get(r["tax"].get("model", "none"), 0) + 1
-    unver = sum(1 for r in results if not r["tax"].get("rate_verified"))
+    unver = sum(1 for r in results if not r["tax"].get("rate_verified")
+                and r["tax"].get("model") in ("document_amount",))
 
     tot, checks = len(results), sum(r["checks_run"] for r in results)
     passed = sum(r["checks_passed"] for r in results)

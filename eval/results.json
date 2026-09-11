@@ -1,5 +1,5 @@
 {
-  "verifier_version": "3.0",
+  "verifier_version": "4.2",
   "seed": 7,
   "corpus": {
     "documents": 76,
@@ -207,7 +207,7 @@
           "doc": "test-000",
           "corruption": "net total 889.20 -> 88.20 (dropped digit)",
           "caught_by": "D1_net_total",
-          "finding": "line net amounts do not sum to the stated net total"
+          "finding": "line amounts sum to neither the stated net total nor the grand total"
         }
       ],
       "missed": []
@@ -262,7 +262,7 @@
           "doc": "test-001",
           "corruption": "line item dropped entirely (LuLaRoe Nicole Dress Size Larg...)",
           "caught_by": "D1_net_total",
-          "finding": "line net amounts do not sum to the stated net total"
+          "finding": "line amounts sum to neither the stated net total nor the grand total"
         }
       ],
       "missed": []
@@ -273,7 +273,7 @@
           "doc": "test-000",
           "corruption": "first line item duplicated",
           "caught_by": "D1_net_total",
-          "finding": "line net amounts do not sum to the stated net total"
+          "finding": "line amounts sum to neither the stated net total nor the grand total"
         }
       ],
       "missed": []

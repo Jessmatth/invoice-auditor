@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "1001-Choco Bun",
+      "quantity": "x1",
+      "unit_price": "22.000",
+      "amount": "22.000"
+    },
+    {
+      "description": "6001-Plastic Bag Small",
+      "quantity": "x1",
+      "unit_price": "0",
+      "amount": "0"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "22.000"
+  }
+}

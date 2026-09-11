@@ -1,0 +1,29 @@
+{
+  "line_items": [
+    {
+      "description": "SAMGYOPSAL",
+      "quantity": "2",
+      "unit_price": null,
+      "amount": "194,000"
+    },
+    {
+      "description": "SUL LUNG TANG",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "75,000"
+    },
+    {
+      "description": "MAKOLI",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "100,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "369,000",
+    "discount_price": "0",
+    "service_charge": "18,450",
+    "tax_amount": "38,745",
+    "total": "426,195"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "line_items": [
+    {
+      "description": "COPIA 1 /GB",
+      "quantity": "1",
+      "unit_price": "45,000.00",
+      "amount": "45,000.00"
+    },
+    {
+      "description": "PLASTIC BAG RED CENTRAL SI",
+      "quantity": "1",
+      "unit_price": "0.00",
+      "amount": "0.00"
+    },
+    {
+      "description": "COPIA 1 /GB",
+      "quantity": "1",
+      "unit_price": "18,000.00",
+      "amount": "18,000.00"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": "0.00",
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "63,000.00"
+  }
+}

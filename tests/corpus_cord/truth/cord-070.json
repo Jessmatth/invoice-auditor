@@ -1,0 +1,71 @@
+{
+  "line_items": [
+    {
+      "description": "UDANG RE",
+      "quantity": "2",
+      "unit_price": "216,000",
+      "amount": "432,000"
+    },
+    {
+      "description": "=*LARGE*==",
+      "quantity": "2",
+      "unit_price": null,
+      "amount": null
+    },
+    {
+      "description": "AYM GR JUN NJAN",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "108,000"
+    },
+    {
+      "description": "SAPO TH SEAFOOD",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "172,000"
+    },
+    {
+      "description": "POCAI 3",
+      "quantity": "2",
+      "unit_price": "111,000",
+      "amount": "222.000"
+    },
+    {
+      "description": "=*MEDIUM*=",
+      "quantity": "2",
+      "unit_price": null,
+      "amount": null
+    },
+    {
+      "description": "GURAME FILLET M",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "163,000"
+    },
+    {
+      "description": "BIHUN GORENG JJ",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "116,000"
+    },
+    {
+      "description": "ICED TEA",
+      "quantity": "5",
+      "unit_price": "12,000",
+      "amount": "60,000"
+    },
+    {
+      "description": "NASI PUTIH",
+      "quantity": "7",
+      "unit_price": "10,000",
+      "amount": "70,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "1,343,000",
+    "discount_price": null,
+    "service_charge": "80,580",
+    "tax_amount": "142,358",
+    "total": "1,565,938"
+  }
+}

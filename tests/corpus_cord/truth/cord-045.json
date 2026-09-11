@@ -1,0 +1,35 @@
+{
+  "line_items": [
+    {
+      "description": "Lemon Tea (L).",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "25.000"
+    },
+    {
+      "description": "Mike & Ike Original",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "28.000"
+    },
+    {
+      "description": "Mike & Berry",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "28.000"
+    },
+    {
+      "description": "Roti Keju Manis.",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "7.000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "88,000"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "Superice Cauburry",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "17,727"
+    }
+  ],
+  "totals": {
+    "subtotal": "17,727",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "1,773",
+    "total": "19,500"
+  }
+}

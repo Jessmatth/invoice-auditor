@@ -1,0 +1,35 @@
+{
+  "line_items": [
+    {
+      "description": "TAHU GORENG",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "28,000"
+    },
+    {
+      "description": "CAKWE",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "17,000"
+    },
+    {
+      "description": "PHO TAI CHIN(R)",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "63,000"
+    },
+    {
+      "description": "TEA",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "11,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "119,000",
+    "discount_price": null,
+    "service_charge": "8,330",
+    "tax_amount": "12,733",
+    "total": "140,063"
+  }
+}

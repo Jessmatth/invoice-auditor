@@ -1,0 +1,29 @@
+{
+  "line_items": [
+    {
+      "description": "Chocolate Log Cake",
+      "quantity": "1x",
+      "unit_price": "115,000",
+      "amount": "115,000"
+    },
+    {
+      "description": "Snowman Cake Chocolate",
+      "quantity": "1x",
+      "unit_price": "60,000",
+      "amount": "60,000"
+    },
+    {
+      "description": "Strawberry Log Cake",
+      "quantity": "2x",
+      "unit_price": "105,000",
+      "amount": "210,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "385,000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "385,000"
+  }
+}

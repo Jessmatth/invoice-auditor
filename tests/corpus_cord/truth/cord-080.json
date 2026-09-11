@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "Viet Milk Coffee",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "25,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "25.000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "25.000"
+  }
+}

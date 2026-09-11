@@ -1,0 +1,29 @@
+{
+  "line_items": [
+    {
+      "description": "TWIST STRAWBERRY DONUT",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "10,000"
+    },
+    {
+      "description": "TLJ CROQUETTE",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "17,000"
+    },
+    {
+      "description": "POTATO PEPPER BAGEL",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "16,000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "43,000"
+  }
+}

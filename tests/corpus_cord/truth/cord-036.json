@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "XXL Crispy Chicken",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "40,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "40,000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "40,000"
+  }
+}

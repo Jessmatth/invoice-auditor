@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "Cheezemania",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "9,500"
+    },
+    {
+      "description": "Mamamia",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "12,500"
+    }
+  ],
+  "totals": {
+    "subtotal": "22,000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "22,000"
+  }
+}

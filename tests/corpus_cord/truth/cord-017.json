@@ -1,0 +1,47 @@
+{
+  "line_items": [
+    {
+      "description": "Goblin's Mace",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "25,000"
+    },
+    {
+      "description": "Mozarella Hot Dog",
+      "quantity": "2",
+      "unit_price": null,
+      "amount": "38,000"
+    },
+    {
+      "description": "Chili Pepper Croquette",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "14,000"
+    },
+    {
+      "description": "Cheese Croquette",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "14,000"
+    },
+    {
+      "description": "Plastik Amook",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "0"
+    },
+    {
+      "description": "Plastik Putih Take Away",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "0"
+    }
+  ],
+  "totals": {
+    "subtotal": "91,000",
+    "discount_price": "(0)",
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "Rp. 91,000"
+  }
+}

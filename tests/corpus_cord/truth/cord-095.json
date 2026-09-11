@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "BASO TAHU",
+      "quantity": "1",
+      "unit_price": "43,181",
+      "amount": "43,181"
+    },
+    {
+      "description": "ES JERUK",
+      "quantity": "1",
+      "unit_price": "13,000",
+      "amount": "13,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "56,181",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "5,618",
+    "total": "61,799"
+  }
+}

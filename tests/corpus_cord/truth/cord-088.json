@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "STIX ECLAIRS",
+      "quantity": "1 x",
+      "unit_price": "19,000",
+      "amount": "19,000"
+    },
+    {
+      "description": "ALMOND CREAM CHEESE",
+      "quantity": "1 x",
+      "unit_price": "28,000",
+      "amount": "28,000"
+    }
+  ],
+  "totals": {
+    "subtotal": "47,000",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "47,000"
+  }
+}

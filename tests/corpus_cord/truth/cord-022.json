@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "[MD] SOFT STEAMED CHEESEC",
+      "quantity": "2",
+      "unit_price": null,
+      "amount": "20,000"
+    },
+    {
+      "description": "[MD] SOFT STEAMED CHOCOCA",
+      "quantity": "2",
+      "unit_price": null,
+      "amount": "20,000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "40,000"
+  }
+}

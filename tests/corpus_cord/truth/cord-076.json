@@ -1,0 +1,35 @@
+{
+  "line_items": [
+    {
+      "description": "BASO TAHU",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "*46000"
+    },
+    {
+      "description": "NASI PUTIH",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "*6000"
+    },
+    {
+      "description": "BASO TAHU",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "*46000"
+    },
+    {
+      "description": "NASI PUTIH",
+      "quantity": "2x",
+      "unit_price": "6000",
+      "amount": "*12000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": null
+  }
+}

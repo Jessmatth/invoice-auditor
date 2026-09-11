@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "BAKSO BNGKS",
+      "quantity": "1",
+      "unit_price": null,
+      "amount": "15.000"
+    },
+    {
+      "description": "GORENGAN",
+      "quantity": "6",
+      "unit_price": null,
+      "amount": "6.000"
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "21.000"
+  }
+}

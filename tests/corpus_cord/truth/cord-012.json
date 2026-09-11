@@ -1,0 +1,23 @@
+{
+  "line_items": [
+    {
+      "description": "BLUS WANITA",
+      "quantity": "1",
+      "unit_price": "@120,000",
+      "amount": null
+    },
+    {
+      "description": "SHOPPING BAG",
+      "quantity": "1",
+      "unit_price": "@880",
+      "amount": null
+    }
+  ],
+  "totals": {
+    "subtotal": null,
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": null,
+    "total": "120,000"
+  }
+}

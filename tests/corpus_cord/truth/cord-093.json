@@ -1,0 +1,17 @@
+{
+  "line_items": [
+    {
+      "description": "THAI ICED TEA (L)",
+      "quantity": "1 X",
+      "unit_price": "16,363",
+      "amount": "16,363"
+    }
+  ],
+  "totals": {
+    "subtotal": "16,363",
+    "discount_price": null,
+    "service_charge": null,
+    "tax_amount": "1,636",
+    "total": "17,999"
+  }
+}
