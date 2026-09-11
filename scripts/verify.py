@@ -1,0 +1,305 @@
+#!/usr/bin/env python3
+"""
+verify.py - deterministic arithmetic audit of an extracted invoice.
+
+The extraction step (a model, or a human annotator, reading the document) is
+not trusted. This module re-derives every number that can be re-derived from
+the others and reports where the document fails to close. There is no model in
+here and it makes no judgement calls.
+
+An invoice line carries five numbers - quantity, unit price, net amount, VAT
+rate and gross amount - of which only three are independent. That redundancy is
+the whole basis of the audit: when a value is missing it can usually be
+recovered, and when two independent derivations of the same value disagree,
+something upstream is wrong and we can say precisely which field it is.
+
+Usage:
+    python3 verify.py extracted.json
+    python3 verify.py --dir path/ [--json]
+"""
+from __future__ import annotations
+import argparse, glob, json, re, sys
+from dataclasses import dataclass, asdict, field
+from decimal import Decimal, InvalidOperation
+
+__version__ = "2.0"
+
+# ---------------------------------------------------------------- numbers --
+
+_CURRENCY = re.compile(r"[^\d,.\-]")
+
+def parse_amount(raw):
+    """Parse a money or quantity token into Decimal, handling both the US
+    (1,234.56) and European (1.234,56) conventions, plus space-grouped
+    (16 800,00) which this corpus uses heavily."""
+    if raw is None:
+        return None
+    if isinstance(raw, (int, float, Decimal)):
+        return Decimal(str(raw))
+    s = _CURRENCY.sub("", str(raw)).strip()
+    if not s or s in {"-", ".", ","}:
+        return None
+    has_dot, has_com = "." in s, "," in s
+    if has_dot and has_com:
+        dec = "." if s.rfind(".") > s.rfind(",") else ","
+        s = s.replace("," if dec == "." else ".", "").replace(dec, ".")
+    elif has_com:
+        frag = s.split(",")
+        s = s.replace(",", ".") if (len(frag) == 2 and len(frag[1]) in (1, 2)) else s.replace(",", "")
+    elif has_dot:
+        frag = s.split(".")
+        if len(frag) > 2 or (len(frag) == 2 and len(frag[1]) == 3 and len(frag[0]) <= 3):
+            s = s.replace(".", "")
+    try:
+        return Decimal(s)
+    except InvalidOperation:
+        return None
+
+def parse_rate(raw):
+    """'10%' -> 0.10 ; 10 -> 0.10 ; '0,1' -> 0.10"""
+    if raw is None:
+        return None
+    v = parse_amount(str(raw))
+    if v is None:
+        return None
+    return v / Decimal(100) if ("%" in str(raw) or v > 1) else v
+
+# ---------------------------------------------------------------- results --
+
+@dataclass
+class Finding:
+    rule: str
+    severity: str                 # error | warning | info
+    field: str | None
+    message: str
+    expected: str | None = None
+    found: str | None = None
+    delta: str | None = None
+    line: int | None = None
+
+@dataclass
+class Audit:
+    doc_id: str | None
+    status: str = "clean"         # clean | flagged | unverifiable
+    checks_run: int = 0
+    checks_passed: int = 0
+    findings: list = field(default_factory=list)
+    recovered: list = field(default_factory=list)
+    coverage: dict = field(default_factory=dict)
+    verifier_version: str = __version__
+
+    def to_dict(self):
+        d = asdict(self)
+        d["findings"] = [asdict(f) if isinstance(f, Finding) else f for f in self.findings]
+        return d
+
+CENT = Decimal("0.01")
+def tol(terms=1):
+    """Each independently rounded term can be off by half a cent; allow a full
+    cent per term so legitimate rounding never trips a flag."""
+    return CENT * Decimal(max(1, terms))
+def close(a, b, t):  return abs(a - b) <= t
+def fmt(d):          return None if d is None else f"{d:,.2f}"
+
+FIELDS = {
+    "qty":   ("item_qty", "quantity", "qty"),
+    "price": ("item_net_price", "unit_price", "price"),
+    "net":   ("item_net_worth", "amount", "net", "line_total"),
+    "gross": ("item_gross_worth", "gross", "gross_amount"),
+    "rate":  ("item_vat", "tax_rate", "vat", "vat_rate"),
+}
+
+def pick(d, key):
+    for k in FIELDS[key]:
+        if k in d and d[k] not in (None, ""):
+            return d[k]
+    return None
+
+# ------------------------------------------------------------------ audit --
+
+def audit_line(it, i, a):
+    """Reconcile one line. Returns (net, gross) using recovered values where
+    the source was silent but the value is unambiguously derivable."""
+    qty   = parse_amount(pick(it, "qty"))
+    price = parse_amount(pick(it, "price"))
+    net   = parse_amount(pick(it, "net"))
+    gross = parse_amount(pick(it, "gross"))
+    rate  = parse_rate(pick(it, "rate"))
+
+    def check(ok, f):
+        a.checks_run += 1
+        if ok: a.checks_passed += 1
+        else:  a.findings.append(f)
+
+    # Two independent routes to the net amount.
+    routes = {}
+    if qty is not None and price is not None:
+        routes["quantity x unit price"] = qty * price
+    if gross is not None and rate is not None and (Decimal(1) + rate) != 0:
+        routes["gross / (1 + VAT)"] = gross / (Decimal(1) + rate)
+
+    if net is not None:
+        # Stated. Check every available route against it.
+        for label, derived in routes.items():
+            check(close(derived, net, tol(2)), Finding(
+                "L1_line_closes", "error", "net",
+                f"line {i}: {label} does not equal the stated net amount",
+                fmt(derived), fmt(net), fmt(net - derived), i))
+    elif len(routes) >= 2:
+        # Not stated, two routes available - they must agree with each other.
+        (la, va), (lb, vb) = list(routes.items())[:2]
+        if close(va, vb, tol(3)):
+            net = va
+            a.recovered.append({"line": i, "field": "net", "value": fmt(net),
+                                "method": la, "corroborated_by": lb})
+            a.checks_run += 1; a.checks_passed += 1
+        else:
+            a.checks_run += 1
+            a.findings.append(Finding(
+                "L2_route_conflict", "error", "net",
+                f"line {i}: net amount is absent and the two ways of deriving it disagree "
+                f"({la} = {fmt(va)}, {lb} = {fmt(vb)}); at least one input field on this line is wrong",
+                fmt(va), fmt(vb), fmt(vb - va), i))
+    elif len(routes) == 1:
+        label, val = next(iter(routes.items()))
+        net = val
+        a.recovered.append({"line": i, "field": "net", "value": fmt(net),
+                            "method": label, "corroborated_by": None})
+        a.findings.append(Finding(
+            "L3_recovered_uncorroborated", "warning", "net",
+            f"line {i}: net amount was absent and was recovered from {label}; no second "
+            f"route available to corroborate it", fmt(net), None, None, i))
+
+    # Gross, given a net and a rate.
+    if net is not None and rate is not None:
+        exp = net * (Decimal(1) + rate)
+        if gross is not None:
+            check(close(exp, gross, tol(2)), Finding(
+                "L4_line_vat", "error", "gross",
+                f"line {i}: net plus VAT does not equal the stated gross amount",
+                fmt(exp), fmt(gross), fmt(gross - exp), i))
+        else:
+            gross = exp
+            a.recovered.append({"line": i, "field": "gross", "value": fmt(gross),
+                                "method": "net x (1 + VAT)", "corroborated_by": None})
+
+    if qty is not None and qty <= 0:
+        a.findings.append(Finding("S1_nonpositive_qty", "warning", "qty",
+                                  f"line {i}: quantity is {fmt(qty)}", line=i))
+    if price is not None and price < 0:
+        a.findings.append(Finding("S2_negative_price", "warning", "price",
+                                  f"line {i}: unit price is negative", line=i))
+    return net, gross
+
+
+def audit(doc, doc_id=None):
+    doc = doc.get("gt_parse", doc)
+    a = Audit(doc_id=doc_id)
+    items   = doc.get("items") or doc.get("line_items") or []
+    summary = doc.get("summary") or doc.get("totals") or doc
+
+    def check(ok, f):
+        a.checks_run += 1
+        if ok: a.checks_passed += 1
+        else:  a.findings.append(f)
+
+    nets, grosses = [], []
+    for i, it in enumerate(items, 1):
+        n, g = audit_line(it, i, a)
+        if n is not None: nets.append(n)
+        if g is not None: grosses.append(g)
+
+    t_net   = parse_amount(summary.get("total_net_worth")   or summary.get("subtotal"))
+    t_vat   = parse_amount(summary.get("total_vat")         or summary.get("tax_amount"))
+    t_gross = parse_amount(summary.get("total_gross_worth") or summary.get("total"))
+    n_terms = max(1, len(items)) + 1
+    complete = len(nets) == len(items) and len(items) > 0
+
+    if complete and t_net is not None:
+        exp = sum(nets)
+        check(close(exp, t_net, tol(n_terms)), Finding(
+            "D1_net_total", "error", "total_net_worth",
+            "line net amounts do not sum to the stated net total",
+            fmt(exp), fmt(t_net), fmt(t_net - exp)))
+    elif t_net is not None and items:
+        a.findings.append(Finding(
+            "D4_total_unverifiable", "warning", "total_net_worth",
+            f"net total could not be checked: {len(items)-len(nets)} of {len(items)} lines "
+            f"have no net amount and none could be recovered"))
+
+    if len(grosses) == len(items) and items and t_gross is not None:
+        exp = sum(grosses)
+        check(close(exp, t_gross, tol(n_terms)), Finding(
+            "D2_gross_total", "error", "total_gross_worth",
+            "line gross amounts do not sum to the stated gross total",
+            fmt(exp), fmt(t_gross), fmt(t_gross - exp)))
+
+    if None not in (t_net, t_vat, t_gross):
+        exp = t_net + t_vat
+        check(close(exp, t_gross, tol(2)), Finding(
+            "D3_total_identity", "error", "total_gross_worth",
+            "net total plus VAT total does not equal the gross total",
+            fmt(exp), fmt(t_gross), fmt(t_gross - exp)))
+
+    a.coverage = {
+        "n_items": len(items),
+        "lines_fully_reconciled": len(nets),
+        "values_recovered": len(a.recovered),
+        "has_net_total": t_net is not None,
+        "has_vat_total": t_vat is not None,
+        "has_gross_total": t_gross is not None,
+    }
+    errs = [f for f in a.findings if f.severity == "error"]
+    a.status = "unverifiable" if a.checks_run == 0 else ("flagged" if errs else "clean")
+    return a
+
+# ------------------------------------------------------------------- cli ---
+
+def main():
+    ap = argparse.ArgumentParser(description="Deterministic arithmetic audit of extracted invoices")
+    ap.add_argument("files", nargs="*")
+    ap.add_argument("--dir")
+    ap.add_argument("--glob", default="*.json")
+    ap.add_argument("--json", action="store_true")
+    ap.add_argument("--quiet", action="store_true", help="summary line only")
+    args = ap.parse_args()
+
+    paths = list(args.files)
+    if args.dir:
+        paths += sorted(glob.glob(f"{args.dir.rstrip('/')}/{args.glob}"))
+    if not paths:
+        ap.error("no input files")
+
+    results = [audit(json.load(open(p)), p.split("/")[-1].rsplit(".", 1)[0]).to_dict() for p in paths]
+
+    if args.json:
+        print(json.dumps(results, indent=2)); return
+
+    tally = {"clean": 0, "flagged": 0, "unverifiable": 0}
+    for r in results:
+        tally[r["status"]] += 1
+        if r["status"] == "clean" or args.quiet:
+            continue
+        print(f"\n{r['doc_id']}  [{r['status']}]  {r['checks_passed']}/{r['checks_run']} checks passed")
+        for f in r["findings"]:
+            loc = f" line {f['line']}" if f.get("line") else ""
+            fld = f" .{f['field']}" if f.get("field") else ""
+            print(f"   {f['severity'].upper():<8} {f['rule']}{loc}{fld}")
+            print(f"            {f['message']}")
+            if f.get("expected") and f.get("found"):
+                print(f"            expected {f['expected']}  found {f['found']}  delta {f['delta']}")
+        for rec in r["recovered"]:
+            c = f", corroborated by {rec['corroborated_by']}" if rec["corroborated_by"] else ""
+            print(f"   RECOVERED line {rec['line']} .{rec['field']} = {rec['value']} via {rec['method']}{c}")
+
+    tot, checks = len(results), sum(r["checks_run"] for r in results)
+    passed = sum(r["checks_passed"] for r in results)
+    rec = sum(len(r["recovered"]) for r in results)
+    print(f"\n{'='*66}")
+    print(f"{tot} documents   {tally['clean']} clean   {tally['flagged']} flagged   {tally['unverifiable']} unverifiable")
+    print(f"{checks} arithmetic checks   {passed} passed   {checks-passed} failed"
+          + (f"   ({100*passed/checks:.1f}%)" if checks else ""))
+    print(f"{rec} missing values recovered by derivation")
+
+if __name__ == "__main__":
+    main()

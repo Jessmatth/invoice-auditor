@@ -1,0 +1,340 @@
+{
+  "verifier_version": "2.0",
+  "seed": 7,
+  "corpus": {
+    "documents": 76,
+    "source": "katanaml-org/invoices-donut-data-v1 (test+validation)"
+  },
+  "baseline": {
+    "clean": 73,
+    "flagged": 2,
+    "unverifiable": 1,
+    "checks_run": 1118,
+    "checks_passed": 1115,
+    "values_recovered": 3,
+    "flagged_ids": [
+      "test-013",
+      "validation-047"
+    ]
+  },
+  "recall": {
+    "usable_documents": 73,
+    "detectable": {
+      "planted": 583,
+      "caught": 583,
+      "rate": 1.0
+    },
+    "undetectable_control": {
+      "planted": 217,
+      "false_alarms": 0,
+      "rate": 0.0
+    }
+  },
+  "boundary": {
+    "off_by_1_cent": {
+      "group": "boundary",
+      "expected_detectable": null,
+      "planted": 72,
+      "caught": 0,
+      "not_applicable": 1,
+      "detection_rate": 0.0
+    },
+    "off_by_5_cents": {
+      "group": "boundary",
+      "expected_detectable": null,
+      "planted": 72,
+      "caught": 72,
+      "not_applicable": 1,
+      "detection_rate": 1.0
+    },
+    "off_by_50_cents": {
+      "group": "boundary",
+      "expected_detectable": null,
+      "planted": 72,
+      "caught": 72,
+      "not_applicable": 1,
+      "detection_rate": 1.0
+    }
+  },
+  "per_class": {
+    "digit_transposition": {
+      "group": "detectable",
+      "expected_detectable": true,
+      "planted": 70,
+      "caught": 70,
+      "not_applicable": 3,
+      "detection_rate": 1.0
+    },
+    "decimal_shift": {
+      "group": "detectable",
+      "expected_detectable": true,
+      "planted": 72,
+      "caught": 72,
+      "not_applicable": 1,
+      "detection_rate": 1.0
+    },
+    "dropped_digit_total": {
+      "group": "detectable",
+      "expected_detectable": true,
+      "planted": 64,
+      "caught": 64,
+      "not_applicable": 9,
+      "detection_rate": 1.0
+    },
+    "ocr_glyph_confusion": {
+      "group": "detectable",
+      "expected_detectable": true,
+      "planted": 72,
+      "caught": 72,
+      "not_applicable": 1,
+      "detection_rate": 1.0
+    },
+    "net_gross_column_swap": {
+      "group": "detectable",
+      "expected_detectable": true,
+      "planted": 72,
+      "caught": 72,
+      "not_applicable": 1,
+      "detection_rate": 1.0
+    },
+    "quantity_misread": {
+      "group": "detectable",
+      "expected_detectable": true,
+      "planted": 72,
+      "caught": 72,
+      "not_applicable": 1,
+      "detection_rate": 1.0
+    },
+    "thousands_misparse": {
+      "group": "detectable",
+      "expected_detectable": true,
+      "planted": 29,
+      "caught": 29,
+      "not_applicable": 44,
+      "detection_rate": 1.0
+    },
+    "dropped_line_item": {
+      "group": "detectable",
+      "expected_detectable": true,
+      "planted": 60,
+      "caught": 60,
+      "not_applicable": 13,
+      "detection_rate": 1.0
+    },
+    "duplicated_line_item": {
+      "group": "detectable",
+      "expected_detectable": true,
+      "planted": 72,
+      "caught": 72,
+      "not_applicable": 1,
+      "detection_rate": 1.0
+    },
+    "off_by_1_cent": {
+      "group": "boundary",
+      "expected_detectable": null,
+      "planted": 72,
+      "caught": 0,
+      "not_applicable": 1,
+      "detection_rate": 0.0
+    },
+    "off_by_5_cents": {
+      "group": "boundary",
+      "expected_detectable": null,
+      "planted": 72,
+      "caught": 72,
+      "not_applicable": 1,
+      "detection_rate": 1.0
+    },
+    "off_by_50_cents": {
+      "group": "boundary",
+      "expected_detectable": null,
+      "planted": 72,
+      "caught": 72,
+      "not_applicable": 1,
+      "detection_rate": 1.0
+    },
+    "description_corrupted": {
+      "group": "undetectable",
+      "expected_detectable": false,
+      "planted": 72,
+      "caught": 0,
+      "not_applicable": 1,
+      "detection_rate": 0.0
+    },
+    "uniform_inflation": {
+      "group": "undetectable",
+      "expected_detectable": false,
+      "planted": 73,
+      "caught": 0,
+      "not_applicable": 0,
+      "detection_rate": 0.0
+    },
+    "vendor_name_swapped": {
+      "group": "undetectable",
+      "expected_detectable": false,
+      "planted": 72,
+      "caught": 0,
+      "not_applicable": 1,
+      "detection_rate": 0.0
+    }
+  },
+  "examples": {
+    "digit_transposition": {
+      "caught": [
+        {
+          "doc": "test-000",
+          "corruption": "line 1 net 889.20 -> 898.20 (digit transposition)",
+          "caught_by": "L1_line_closes",
+          "finding": "line 1: quantity x unit price does not equal the stated net amount"
+        }
+      ],
+      "missed": []
+    },
+    "decimal_shift": {
+      "caught": [
+        {
+          "doc": "test-000",
+          "corruption": "line 1 unit price 444.60 -> 4446.00 (decimal shift)",
+          "caught_by": "L1_line_closes",
+          "finding": "line 1: quantity x unit price does not equal the stated net amount"
+        }
+      ],
+      "missed": []
+    },
+    "dropped_digit_total": {
+      "caught": [
+        {
+          "doc": "test-000",
+          "corruption": "net total 889.20 -> 88.20 (dropped digit)",
+          "caught_by": "D1_net_total",
+          "finding": "line net amounts do not sum to the stated net total"
+        }
+      ],
+      "missed": []
+    },
+    "ocr_glyph_confusion": {
+      "caught": [
+        {
+          "doc": "test-000",
+          "corruption": "line 1 gross 978.12 -> 973.12 (OCR 8->3)",
+          "caught_by": "L1_line_closes",
+          "finding": "line 1: gross / (1 + VAT) does not equal the stated net amount"
+        }
+      ],
+      "missed": []
+    },
+    "net_gross_column_swap": {
+      "caught": [
+        {
+          "doc": "test-000",
+          "corruption": "line 1 net and gross columns swapped",
+          "caught_by": "L1_line_closes",
+          "finding": "line 1: quantity x unit price does not equal the stated net amount"
+        }
+      ],
+      "missed": []
+    },
+    "quantity_misread": {
+      "caught": [
+        {
+          "doc": "test-000",
+          "corruption": "line 1 qty 2.00 -> 7.00 (misread)",
+          "caught_by": "L1_line_closes",
+          "finding": "line 1: quantity x unit price does not equal the stated net amount"
+        }
+      ],
+      "missed": []
+    },
+    "thousands_misparse": {
+      "caught": [
+        {
+          "doc": "test-004",
+          "corruption": "line 2 net 1199.97 -> 1.20 (thousands separator lost)",
+          "caught_by": "L1_line_closes",
+          "finding": "line 2: quantity x unit price does not equal the stated net amount"
+        }
+      ],
+      "missed": []
+    },
+    "dropped_line_item": {
+      "caught": [
+        {
+          "doc": "test-001",
+          "corruption": "line item dropped entirely (LuLaRoe Nicole Dress Size Larg...)",
+          "caught_by": "D1_net_total",
+          "finding": "line net amounts do not sum to the stated net total"
+        }
+      ],
+      "missed": []
+    },
+    "duplicated_line_item": {
+      "caught": [
+        {
+          "doc": "test-000",
+          "corruption": "first line item duplicated",
+          "caught_by": "D1_net_total",
+          "finding": "line net amounts do not sum to the stated net total"
+        }
+      ],
+      "missed": []
+    },
+    "off_by_1_cent": {
+      "caught": [],
+      "missed": [
+        {
+          "doc": "test-000",
+          "corruption": "line 1 net 889.20 -> 889.21 (+1c)"
+        }
+      ]
+    },
+    "off_by_5_cents": {
+      "caught": [
+        {
+          "doc": "test-000",
+          "corruption": "line 1 net 889.20 -> 889.25 (+5c)",
+          "caught_by": "L1_line_closes",
+          "finding": "line 1: quantity x unit price does not equal the stated net amount"
+        }
+      ],
+      "missed": []
+    },
+    "off_by_50_cents": {
+      "caught": [
+        {
+          "doc": "test-000",
+          "corruption": "line 1 net 889.20 -> 889.70 (+50c)",
+          "caught_by": "L1_line_closes",
+          "finding": "line 1: quantity x unit price does not equal the stated net amount"
+        }
+      ],
+      "missed": []
+    },
+    "description_corrupted": {
+      "caught": [],
+      "missed": [
+        {
+          "doc": "test-000",
+          "corruption": "line 1 description replaced (no arithmetic involvement)"
+        }
+      ]
+    },
+    "uniform_inflation": {
+      "caught": [],
+      "missed": [
+        {
+          "doc": "test-000",
+          "corruption": "every amount doubled (all identities still close)"
+        }
+      ]
+    },
+    "vendor_name_swapped": {
+      "caught": [],
+      "missed": [
+        {
+          "doc": "test-000",
+          "corruption": "seller name replaced (no arithmetic involvement)"
+        }
+      ]
+    }
+  }
+}

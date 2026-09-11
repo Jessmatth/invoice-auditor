@@ -1,0 +1,838 @@
+[
+  {
+    "id": "test-000",
+    "split": "test",
+    "image": "images/test-000.png",
+    "truth": "truth/test-000.json",
+    "n_items": 1,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-001",
+    "split": "test",
+    "image": "images/test-001.png",
+    "truth": "truth/test-001.json",
+    "n_items": 6,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-002",
+    "split": "test",
+    "image": "images/test-002.png",
+    "truth": "truth/test-002.json",
+    "n_items": 1,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-003",
+    "split": "test",
+    "image": "images/test-003.png",
+    "truth": "truth/test-003.json",
+    "n_items": 2,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-004",
+    "split": "test",
+    "image": "images/test-004.png",
+    "truth": "truth/test-004.json",
+    "n_items": 7,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-005",
+    "split": "test",
+    "image": "images/test-005.png",
+    "truth": "truth/test-005.json",
+    "n_items": 5,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-006",
+    "split": "test",
+    "image": "images/test-006.png",
+    "truth": "truth/test-006.json",
+    "n_items": 5,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-007",
+    "split": "test",
+    "image": "images/test-007.png",
+    "truth": "truth/test-007.json",
+    "n_items": 1,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-008",
+    "split": "test",
+    "image": "images/test-008.png",
+    "truth": "truth/test-008.json",
+    "n_items": 3,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-009",
+    "split": "test",
+    "image": "images/test-009.png",
+    "truth": "truth/test-009.json",
+    "n_items": 1,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-010",
+    "split": "test",
+    "image": "images/test-010.png",
+    "truth": "truth/test-010.json",
+    "n_items": 6,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-011",
+    "split": "test",
+    "image": "images/test-011.png",
+    "truth": "truth/test-011.json",
+    "n_items": 2,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-012",
+    "split": "test",
+    "image": "images/test-012.png",
+    "truth": "truth/test-012.json",
+    "n_items": 5,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-013",
+    "split": "test",
+    "image": "images/test-013.png",
+    "truth": "truth/test-013.json",
+    "n_items": 6,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-014",
+    "split": "test",
+    "image": "images/test-014.png",
+    "truth": "truth/test-014.json",
+    "n_items": 3,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-015",
+    "split": "test",
+    "image": "images/test-015.png",
+    "truth": "truth/test-015.json",
+    "n_items": 1,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-016",
+    "split": "test",
+    "image": "images/test-016.png",
+    "truth": "truth/test-016.json",
+    "n_items": 7,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-017",
+    "split": "test",
+    "image": "images/test-017.png",
+    "truth": "truth/test-017.json",
+    "n_items": 7,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-018",
+    "split": "test",
+    "image": "images/test-018.png",
+    "truth": "truth/test-018.json",
+    "n_items": 3,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-019",
+    "split": "test",
+    "image": "images/test-019.png",
+    "truth": "truth/test-019.json",
+    "n_items": 2,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-020",
+    "split": "test",
+    "image": "images/test-020.png",
+    "truth": "truth/test-020.json",
+    "n_items": 4,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-021",
+    "split": "test",
+    "image": "images/test-021.png",
+    "truth": "truth/test-021.json",
+    "n_items": 6,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-022",
+    "split": "test",
+    "image": "images/test-022.png",
+    "truth": "truth/test-022.json",
+    "n_items": 5,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-023",
+    "split": "test",
+    "image": "images/test-023.png",
+    "truth": "truth/test-023.json",
+    "n_items": 6,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-024",
+    "split": "test",
+    "image": "images/test-024.png",
+    "truth": "truth/test-024.json",
+    "n_items": 6,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "test-025",
+    "split": "test",
+    "image": "images/test-025.png",
+    "truth": "truth/test-025.json",
+    "n_items": 5,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-000",
+    "split": "validation",
+    "image": "images/validation-000.png",
+    "truth": "truth/validation-000.json",
+    "n_items": 4,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-001",
+    "split": "validation",
+    "image": "images/validation-001.png",
+    "truth": "truth/validation-001.json",
+    "n_items": 0,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-002",
+    "split": "validation",
+    "image": "images/validation-002.png",
+    "truth": "truth/validation-002.json",
+    "n_items": 2,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-003",
+    "split": "validation",
+    "image": "images/validation-003.png",
+    "truth": "truth/validation-003.json",
+    "n_items": 3,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-004",
+    "split": "validation",
+    "image": "images/validation-004.png",
+    "truth": "truth/validation-004.json",
+    "n_items": 2,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-005",
+    "split": "validation",
+    "image": "images/validation-005.png",
+    "truth": "truth/validation-005.json",
+    "n_items": 5,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-006",
+    "split": "validation",
+    "image": "images/validation-006.png",
+    "truth": "truth/validation-006.json",
+    "n_items": 5,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-007",
+    "split": "validation",
+    "image": "images/validation-007.png",
+    "truth": "truth/validation-007.json",
+    "n_items": 7,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-008",
+    "split": "validation",
+    "image": "images/validation-008.png",
+    "truth": "truth/validation-008.json",
+    "n_items": 3,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-009",
+    "split": "validation",
+    "image": "images/validation-009.png",
+    "truth": "truth/validation-009.json",
+    "n_items": 5,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-010",
+    "split": "validation",
+    "image": "images/validation-010.png",
+    "truth": "truth/validation-010.json",
+    "n_items": 4,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-011",
+    "split": "validation",
+    "image": "images/validation-011.png",
+    "truth": "truth/validation-011.json",
+    "n_items": 6,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-012",
+    "split": "validation",
+    "image": "images/validation-012.png",
+    "truth": "truth/validation-012.json",
+    "n_items": 7,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-013",
+    "split": "validation",
+    "image": "images/validation-013.png",
+    "truth": "truth/validation-013.json",
+    "n_items": 7,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-014",
+    "split": "validation",
+    "image": "images/validation-014.png",
+    "truth": "truth/validation-014.json",
+    "n_items": 4,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-015",
+    "split": "validation",
+    "image": "images/validation-015.png",
+    "truth": "truth/validation-015.json",
+    "n_items": 4,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-016",
+    "split": "validation",
+    "image": "images/validation-016.png",
+    "truth": "truth/validation-016.json",
+    "n_items": 4,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-017",
+    "split": "validation",
+    "image": "images/validation-017.png",
+    "truth": "truth/validation-017.json",
+    "n_items": 7,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-018",
+    "split": "validation",
+    "image": "images/validation-018.png",
+    "truth": "truth/validation-018.json",
+    "n_items": 3,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-019",
+    "split": "validation",
+    "image": "images/validation-019.png",
+    "truth": "truth/validation-019.json",
+    "n_items": 1,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-020",
+    "split": "validation",
+    "image": "images/validation-020.png",
+    "truth": "truth/validation-020.json",
+    "n_items": 7,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-021",
+    "split": "validation",
+    "image": "images/validation-021.png",
+    "truth": "truth/validation-021.json",
+    "n_items": 7,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-022",
+    "split": "validation",
+    "image": "images/validation-022.png",
+    "truth": "truth/validation-022.json",
+    "n_items": 5,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-023",
+    "split": "validation",
+    "image": "images/validation-023.png",
+    "truth": "truth/validation-023.json",
+    "n_items": 2,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-024",
+    "split": "validation",
+    "image": "images/validation-024.png",
+    "truth": "truth/validation-024.json",
+    "n_items": 1,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-025",
+    "split": "validation",
+    "image": "images/validation-025.png",
+    "truth": "truth/validation-025.json",
+    "n_items": 7,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-026",
+    "split": "validation",
+    "image": "images/validation-026.png",
+    "truth": "truth/validation-026.json",
+    "n_items": 5,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-027",
+    "split": "validation",
+    "image": "images/validation-027.png",
+    "truth": "truth/validation-027.json",
+    "n_items": 5,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-028",
+    "split": "validation",
+    "image": "images/validation-028.png",
+    "truth": "truth/validation-028.json",
+    "n_items": 7,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-029",
+    "split": "validation",
+    "image": "images/validation-029.png",
+    "truth": "truth/validation-029.json",
+    "n_items": 0,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-030",
+    "split": "validation",
+    "image": "images/validation-030.png",
+    "truth": "truth/validation-030.json",
+    "n_items": 6,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-031",
+    "split": "validation",
+    "image": "images/validation-031.png",
+    "truth": "truth/validation-031.json",
+    "n_items": 3,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-032",
+    "split": "validation",
+    "image": "images/validation-032.png",
+    "truth": "truth/validation-032.json",
+    "n_items": 1,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-033",
+    "split": "validation",
+    "image": "images/validation-033.png",
+    "truth": "truth/validation-033.json",
+    "n_items": 3,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-034",
+    "split": "validation",
+    "image": "images/validation-034.png",
+    "truth": "truth/validation-034.json",
+    "n_items": 1,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-035",
+    "split": "validation",
+    "image": "images/validation-035.png",
+    "truth": "truth/validation-035.json",
+    "n_items": 3,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-036",
+    "split": "validation",
+    "image": "images/validation-036.png",
+    "truth": "truth/validation-036.json",
+    "n_items": 2,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-037",
+    "split": "validation",
+    "image": "images/validation-037.png",
+    "truth": "truth/validation-037.json",
+    "n_items": 5,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-038",
+    "split": "validation",
+    "image": "images/validation-038.png",
+    "truth": "truth/validation-038.json",
+    "n_items": 2,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-039",
+    "split": "validation",
+    "image": "images/validation-039.png",
+    "truth": "truth/validation-039.json",
+    "n_items": 4,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-040",
+    "split": "validation",
+    "image": "images/validation-040.png",
+    "truth": "truth/validation-040.json",
+    "n_items": 1,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-041",
+    "split": "validation",
+    "image": "images/validation-041.png",
+    "truth": "truth/validation-041.json",
+    "n_items": 1,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-042",
+    "split": "validation",
+    "image": "images/validation-042.png",
+    "truth": "truth/validation-042.json",
+    "n_items": 3,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-043",
+    "split": "validation",
+    "image": "images/validation-043.png",
+    "truth": "truth/validation-043.json",
+    "n_items": 1,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-044",
+    "split": "validation",
+    "image": "images/validation-044.png",
+    "truth": "truth/validation-044.json",
+    "n_items": 2,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-045",
+    "split": "validation",
+    "image": "images/validation-045.png",
+    "truth": "truth/validation-045.json",
+    "n_items": 6,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-046",
+    "split": "validation",
+    "image": "images/validation-046.png",
+    "truth": "truth/validation-046.json",
+    "n_items": 6,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-047",
+    "split": "validation",
+    "image": "images/validation-047.png",
+    "truth": "truth/validation-047.json",
+    "n_items": 4,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-048",
+    "split": "validation",
+    "image": "images/validation-048.png",
+    "truth": "truth/validation-048.json",
+    "n_items": 6,
+    "size": [
+      2481,
+      3508
+    ]
+  },
+  {
+    "id": "validation-049",
+    "split": "validation",
+    "image": "images/validation-049.png",
+    "truth": "truth/validation-049.json",
+    "n_items": 7,
+    "size": [
+      2481,
+      3508
+    ]
+  }
+]

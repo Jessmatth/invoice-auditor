@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Extracted invoice",
+  "description": "Transcribe figures exactly as printed. Use null for absent values, never a plausible substitute. Capture every numeric column even when it appears redundant; the redundancy is what makes verification possible.",
+  "type": "object",
+  "required": ["header", "items", "summary"],
+  "properties": {
+    "header": {
+      "type": "object",
+      "properties": {
+        "invoice_no":     {"type": ["string", "null"]},
+        "invoice_date":   {"type": ["string", "null"], "description": "as printed; do not reformat"},
+        "due_date":       {"type": ["string", "null"]},
+        "seller":         {"type": ["string", "null"]},
+        "client":         {"type": ["string", "null"]},
+        "seller_tax_id":  {"type": ["string", "null"]},
+        "client_tax_id":  {"type": ["string", "null"]},
+        "iban":           {"type": ["string", "null"]},
+        "currency":       {"type": ["string", "null"], "description": "symbol or ISO code as printed"}
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item_desc":        {"type": ["string", "null"]},
+          "item_qty":         {"type": ["string", "null"]},
+          "item_net_price":   {"type": ["string", "null"], "description": "unit price before tax"},
+          "item_net_worth":   {"type": ["string", "null"], "description": "line total before tax"},
+          "item_vat":         {"type": ["string", "null"], "description": "rate, e.g. '10%'"},
+          "item_gross_worth": {"type": ["string", "null"], "description": "line total after tax"},
+          "page":             {"type": ["integer", "null"]}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "total_net_worth":   {"type": ["string", "null"]},
+        "total_vat":         {"type": ["string", "null"]},
+        "total_gross_worth": {"type": ["string", "null"]}
+      }
+    }
+  }
+}
