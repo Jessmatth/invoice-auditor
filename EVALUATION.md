@@ -10,9 +10,29 @@ python3 scripts/evaluate.py --seed 7
 
 76 invoices from [`katanaml-org/invoices-donut-data-v1`](https://huggingface.co/datasets/katanaml-org/invoices-donut-data-v1)
 (test + validation splits), each with human-annotated ground truth covering line
-items and totals. Invoices run 0–7 line items and use European decimal commas with
-space-grouped thousands (`16 800,00`) under a `$` symbol — a genuine parsing hazard,
-and a useful one to be tested against.
+items and totals. Invoices run 0–7 line items.
+
+**These are synthetic documents, and the composition matters when reading every
+number below:**
+
+| Property | Value |
+|---|---|
+| IBAN country prefix | `GB` on all 74 that have one |
+| Postal addresses | United States, 49 states, US ZIP codes |
+| Tax ID format | `NNN-NN-NNNN` (US SSN/EIN shape) |
+| Currency symbol | `$` |
+| Decimal convention | European comma, space-grouped thousands (`16 800,00`) |
+| VAT rate | **10% on 300 of 300 line items** |
+| Distinct header templates | 3 |
+
+No real jurisdiction issues an invoice with a US address, a British IBAN, dollar
+amounts and comma decimals under a VAT heading. This is Faker output from
+essentially one template, so the corpus tests parsing hazards and arithmetic well
+and tests layout and tax-regime diversity not at all.
+
+The single-rate monoculture is the sharpest limit: nothing in this corpus exercises
+a mixed-rate invoice, a zero-rated line, or a US sales-tax invoice with no VAT
+column. Section 5 covers those separately with hand-built fixtures.
 
 ## 1. Precision: does it cry wolf?
 
@@ -114,10 +134,38 @@ by the same factor, every identity still closes.
 extraction is right, and it does not mean the charge is owed.** Stating that plainly
 is part of the skill.
 
+## 5. Shapes the corpus does not contain
+
+Because every corpus line item is 10% VAT, the common real-world shapes are tested
+with hand-built fixtures in `tests/shapes/`, each with a hand-computed expected
+outcome:
+
+```bash
+python3 scripts/test_shapes.py
+```
+
+| Fixture | Expected | Result |
+|---|---|---|
+| EU mixed rates, 20% and 5% on one invoice | clean | pass |
+| Reduced-rate line charged at the standard rate | flagged | pass |
+| US sales tax, no per-line tax column | clean | pass |
+| US sales tax, grand total overstated by $10 | flagged | pass |
+| Zero-rated line beside a standard-rated one | clean | pass |
+| Discount carried as a negative line | clean | pass |
+| Blended rate wrongly applied to the VAT total | flagged | pass |
+| Untaxed shipping line beside taxed goods | clean | pass |
+
+8 of 8. The checks are structural identities rather than rate-specific formulas,
+which is why a document-level `net + tax = gross` behaves the same whether the tax
+is 10% VAT, two VAT rates, or Ohio sales tax. Worth stating that this was verified
+rather than assumed: the uniform corpus could not have revealed a rate-specific bug.
+
 ## Honest summary
 
-- 0 false positives on 76 real invoices
+- 0 false positives on 76 synthetic invoices from a single template family
 - 100% detection across 583 planted arithmetic errors
 - 0 detection below the 1-cent tolerance floor
 - 0 detection on the three corruption classes arithmetic cannot reach
+- 8 of 8 invoice shapes outside the corpus handled correctly
 - 2 real annotation errors found in a public dataset, unprompted
+- The corpus is the weakest part of this evaluation: one generator, one tax rate, three templates

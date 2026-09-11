@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "item_desc": "Consulting",
+      "item_qty": "10",
+      "item_net_price": "100.00",
+      "item_net_worth": "1000.00",
+      "item_vat": "20%",
+      "item_gross_worth": "1200.00"
+    },
+    {
+      "item_desc": "Printed book",
+      "item_qty": "4",
+      "item_net_price": "25.00",
+      "item_net_worth": "100.00",
+      "item_vat": "5%",
+      "item_gross_worth": "105.00"
+    }
+  ],
+  "summary": {
+    "total_net_worth": "1100.00",
+    "total_vat": "137.50",
+    "total_gross_worth": "1305.00"
+  }
+}

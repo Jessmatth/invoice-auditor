@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "item_desc": "Goods",
+      "item_qty": "1",
+      "item_net_price": "500.00",
+      "item_net_worth": "500.00",
+      "item_vat": "20%",
+      "item_gross_worth": "600.00"
+    },
+    {
+      "item_desc": "Shipping",
+      "item_qty": "1",
+      "item_net_price": "25.00",
+      "item_net_worth": "25.00",
+      "item_vat": "0%",
+      "item_gross_worth": "25.00"
+    }
+  ],
+  "summary": {
+    "total_net_worth": "525.00",
+    "total_vat": "100.00",
+    "total_gross_worth": "625.00"
+  }
+}

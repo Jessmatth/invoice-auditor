@@ -26,15 +26,17 @@ FLAGGED
 
 ## Results
 
-Measured on 76 real invoices with human ground truth. Full method and reproduction
-in [EVALUATION.md](EVALUATION.md).
+Measured on 76 synthetic invoices with human-annotated ground truth, plus 8
+hand-built fixtures covering shapes that corpus does not contain. Full method,
+corpus composition and reproduction in [EVALUATION.md](EVALUATION.md).
 
 | | |
 |---|---|
-| False positives on real invoices | **0 / 76** |
+| False positives on the corpus | **0 / 76** |
 | Planted arithmetic errors caught | **583 / 583** |
 | Smallest error reliably caught | **5 cents** |
 | Real annotation errors found in the public dataset | **2** |
+| Invoice shapes outside the corpus, hand-verified | **8 / 8** |
 
 That last row is the one worth dwelling on. Running the audit over the ground truth
 of a public dataset used to train extraction models surfaced two mislabeled records
@@ -42,7 +44,15 @@ of a public dataset used to train extraction models surfaced two mislabeled reco
 
 ## What it cannot do
 
-Arithmetic validates only figures that participate in an identity:
+**The corpus is synthetic and uniform.** All 76 invoices come from one generator,
+every one of their 300 line items carries 10% VAT, and the documents mix US
+addresses with British IBANs and dollar amounts written with European decimal
+commas. No real jurisdiction issues an invoice like that. The 8 fixtures in
+`tests/shapes/` cover mixed VAT rates, US sales tax, zero-rated lines, discounts
+and untaxed shipping, but a wider corpus of genuine documents is the biggest gap
+in this evaluation.
+
+Beyond that, arithmetic validates only figures that participate in an identity:
 
 - Vendor names, addresses, tax IDs, IBANs and descriptions are unverifiable this way
 - If every amount is scaled by the same factor, every identity still closes

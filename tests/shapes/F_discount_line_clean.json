@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "item_desc": "Annual licence",
+      "item_qty": "1",
+      "item_net_price": "1200.00",
+      "item_net_worth": "1200.00",
+      "item_vat": "20%",
+      "item_gross_worth": "1440.00"
+    },
+    {
+      "item_desc": "Loyalty discount",
+      "item_qty": "1",
+      "item_net_price": "-200.00",
+      "item_net_worth": "-200.00",
+      "item_vat": "20%",
+      "item_gross_worth": "-240.00"
+    }
+  ],
+  "summary": {
+    "total_net_worth": "1000.00",
+    "total_vat": "200.00",
+    "total_gross_worth": "1200.00"
+  }
+}

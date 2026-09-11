@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "item_desc": "Standard goods",
+      "item_qty": "2",
+      "item_net_price": "50.00",
+      "item_net_worth": "100.00",
+      "item_vat": "20%",
+      "item_gross_worth": "120.00"
+    },
+    {
+      "item_desc": "Exempt: childrens clothing",
+      "item_qty": "5",
+      "item_net_price": "10.00",
+      "item_net_worth": "50.00",
+      "item_vat": "0%",
+      "item_gross_worth": "50.00"
+    }
+  ],
+  "summary": {
+    "total_net_worth": "150.00",
+    "total_vat": "20.00",
+    "total_gross_worth": "170.00"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "line_items": [
+    {
+      "description": "Widget",
+      "quantity": "3",
+      "unit_price": "19.99",
+      "amount": "59.97"
+    },
+    {
+      "description": "Gadget",
+      "quantity": "1",
+      "unit_price": "149.00",
+      "amount": "149.00"
+    }
+  ],
+  "totals": {
+    "subtotal": "208.97",
+    "tax_amount": "17.24",
+    "total": "226.21"
+  }
+}
