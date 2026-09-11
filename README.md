@@ -1,4 +1,5 @@
 # invoice-auditor
+<img width="1408" height="768" alt="Gemini_Generated_Image_w5yljjw5yljjw5yl" src="https://github.com/user-attachments/assets/28c1ab6b-d5a1-453a-9083-252e1a45638e" />
 
 A Claude skill that extracts invoices **and proves the extraction is correct.**
 
