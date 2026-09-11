@@ -52,12 +52,12 @@ image.
 **False positives: 0.** Both surviving flags are real errors in the dataset's own
 human annotations:
 
-- **`validation-047`** — the annotation shifted a column, recording line 1's *net
+- **`validation-047`**: the annotation shifted a column, recording line 1's *net
   worth* (8,400.00) into the *net price* field and leaving net worth empty. The
   source invoice is internally correct: qty 3,00 × net price 2 800,00 = 8 400,00.
   The audit caught a mislabeled record in a public training dataset with no model in
   the loop.
-- **`test-013`** — gross total annotated as `1 579 929,37` where net (143,572.15) +
+- **`test-013`**: gross total annotated as `1 579 929,37` where net (143,572.15) +
   VAT (14,357.22) = `157,929.37`. A stray digit.
 
 The one `unverifiable` document has an empty ground truth block and correctly
@@ -69,7 +69,7 @@ v1 flagged four documents. Three were caused by a line missing its net amount, a
 v1 reported them at the document level: *"line net amounts do not sum to the stated
 net total."* True, but it blamed the wrong thing and gave the user nowhere to look.
 
-v2 reconciles each line through two independent routes — `quantity × unit price` and
+v2 reconciles each line through two independent routes, `quantity × unit price` and
 `gross ÷ (1 + VAT)`. When a value is absent and both routes agree, it is recovered
 and the document verifies. When they disagree, the finding names the line and the
 field:
@@ -84,8 +84,8 @@ point at a field instead of a document.
 ## 2. Recall: does it catch real errors?
 
 A clean corpus proves only that the audit is quiet. To show it catches errors, known
-corruptions are planted in the 73 clean documents — the specific ways OCR and LLM
-extraction actually fail — and the detection rate measured per class.
+corruptions are planted in the 73 clean documents, the specific ways OCR and LLM
+extraction actually fail, and the detection rate measured per class.
 
 | Corruption | Planted | Caught | Rate |
 |---|---:|---:|---:|
@@ -113,7 +113,7 @@ must break. The number worth trusting is the one below.
 | 50 cents | 72 | 72 | 100% |
 
 Tolerance is one cent per independently rounded term, so sub-cent discrepancies are
-invisible **by design** — without that allowance, ordinary rounding would flag most
+invisible **by design**. Without that allowance, ordinary rounding would flag most
 legitimate invoices. The floor sits between 1 and 5 cents. This is a real limitation
 and it is published rather than hidden.
 

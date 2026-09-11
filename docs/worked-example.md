@@ -1,6 +1,6 @@
 # Worked example
 
-A blind run of the full skill — extract, then audit — on `test-004`, a 7-line
+A blind run of the full skill (extract, then audit) on `test-004`, a 7-line
 invoice. The ground truth was held out until after the audit reported.
 
 ## 1. Extract
@@ -35,5 +35,5 @@ numeric cells compared: 38   mismatches: 0   agreement: 100.0%
 The audit said clean, and clean is what it was.
 
 That is the whole point. The audit reached that verdict from the document's internal
-consistency alone, with no access to ground truth — which is the situation you are
+consistency alone, with no access to ground truth, which is the situation you are
 actually in when processing an invoice nobody has checked.

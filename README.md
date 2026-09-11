@@ -5,11 +5,11 @@ A Claude skill that extracts invoices **and proves the extraction is correct.**
 
 Most document-extraction tools return a confident JSON blob. You have no way to know
 whether the model misread a column, lost a thousands separator, or transposed two
-digits — and the model will report high confidence either way. Self-reported
+digits, and the model will report high confidence either way. Self-reported
 confidence is the model grading its own homework.
 
-Invoices happen to be checkable. An invoice line carries five numbers — quantity,
-unit price, net, VAT rate, gross — of which only three are independent. The document
+Invoices happen to be checkable. An invoice line carries five numbers (quantity,
+unit price, net, VAT rate, gross) of which only three are independent. The document
 over-determines itself, so the arithmetic either closes or it does not, and finding
 out requires no model at all.
 
@@ -40,7 +40,7 @@ corpus composition and reproduction in [EVALUATION.md](EVALUATION.md).
 
 That last row is the one worth dwelling on. Running the audit over the ground truth
 of a public dataset used to train extraction models surfaced two mislabeled records
-— one column shift, one stray digit — with no model in the loop.
+one column shift, one stray digit, with no model in the loop.
 
 ## What it cannot do
 
@@ -104,7 +104,7 @@ improves nothing measurable does not ship.
 The evaluation corpus is 76 invoices from
 [`katanaml-org/invoices-donut-data-v1`](https://huggingface.co/datasets/katanaml-org/invoices-donut-data-v1),
 MIT licensed. Ground truth JSON is vendored in `tests/corpus/truth/`. The page
-images are 54MB and are not — fetch them with:
+images are 54MB and are not. Fetch them with:
 
 ```bash
 python3 scripts/fetch_corpus.py

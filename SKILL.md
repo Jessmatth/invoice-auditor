@@ -8,8 +8,8 @@ description: Extract invoices and receipts into structured data, then prove the 
 Extraction is the easy half. This skill exists for the hard half: knowing when the
 extraction is wrong.
 
-An invoice line carries five numbers — quantity, unit price, net amount, VAT rate,
-gross amount — of which only three are independent. The document over-determines
+An invoice line carries five numbers (quantity, unit price, net amount, VAT rate,
+gross amount) of which only three are independent. The document over-determines
 itself, and that redundancy is checkable by arithmetic with no model in the loop.
 Use it. Never report a figure as correct because it looked correct.
 
@@ -27,12 +27,12 @@ not evidence; the model that misread a total will also feel sure about it.
 
 2. **Extract to the schema** in `references/schema.json`. Rules that matter:
    - Capture *every* numeric column present on each line, even when it looks
-     redundant. The redundancy is what makes verification possible — dropping the
+     redundant. The redundancy is what makes verification possible, and dropping the
      net column because gross is present destroys a check.
    - Transcribe figures exactly as printed. Do not normalise, round, or "fix"
      anything. `16 800,00` is recorded as `16 800,00`; the verifier parses it.
    - Use `null` for a value that is genuinely absent. Never substitute a plausible
-     one — the verifier can often recover a missing value and will say so, but it
+     one. The verifier can often recover a missing value and will say so, but it
      cannot recover from an invented one.
    - Record `page` and a bounding hint for each line so a flag is traceable back to
      the document.
@@ -43,11 +43,11 @@ not evidence; the model that misread a total will also feel sure about it.
    ```
 
 4. **Act on the result.**
-   - `clean` — every identity closed. Report the data.
-   - `flagged` — report the data *with the findings attached*. Name the line and
+   - `clean`: every identity closed. Report the data.
+   - `flagged`: report the data *with the findings attached*. Name the line and
      field. Do not quietly correct it; a mismatch means either the extraction is
      wrong or the invoice is wrong, and the user needs to know which.
-   - `unverifiable` — too few numbers to cross-check anything. Say so plainly. This
+   - `unverifiable`: too few numbers to cross-check anything. Say so plainly. This
      is not the same as correct.
 
 5. **Re-read before re-guessing.** When a line is flagged, go back to that region of
@@ -60,7 +60,7 @@ not evidence; the model that misread a total will also feel sure about it.
 | Rule | Check |
 |---|---|
 | `L1_line_closes` | quantity × unit price, and gross ÷ (1 + VAT), both equal the stated net |
-| `L2_route_conflict` | net is absent and the two derivations of it disagree — pinpoints the bad field |
+| `L2_route_conflict` | net is absent and the two derivations of it disagree, pinpointing the bad field |
 | `L3_recovered_uncorroborated` | net was absent and recovered from a single route, with nothing to confirm it |
 | `L4_line_vat` | net × (1 + VAT) equals the stated gross |
 | `D1_net_total` | line net amounts sum to the stated net total |
@@ -89,8 +89,8 @@ State these limits when reporting results. A clean audit is a narrow claim.
 
 ## Output
 
-Return the extraction and the audit together. The exception list is the deliverable —
-for a batch, lead with the flagged documents and summarise the rest.
+Return the extraction and the audit together. The exception list is the deliverable.
+For a batch, lead with the flagged documents and summarise the rest.
 
 ```
 47 invoices   44 clean   2 flagged   1 unverifiable
@@ -101,7 +101,7 @@ FLAGGED
   inv-2310  net total + VAT does not equal gross total; delta 900.00
 
 UNVERIFIABLE
-  inv-2288  totals block only, no line items — nothing to cross-check
+  inv-2288  totals block only, no line items, nothing to cross-check
 ```
 
 ## Evaluating a change
