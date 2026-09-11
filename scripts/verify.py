@@ -37,8 +37,14 @@ def parse_amount(raw):
     if isinstance(raw, (int, float, Decimal)):
         return Decimal(str(raw))
     s = _CURRENCY.sub("", str(raw)).strip()
-    if not s or s in {"-", ".", ","}:
+    # A currency abbreviation can leave its own punctuation behind ("Rp. 111,000"
+    # strips to ".111,000", which then reads as a European decimal). Keep only
+    # the numeric core: an optional sign, then digits and separators, ending in
+    # a digit.
+    m = re.search(r"-?\d[\d.,]*\d|-?\d", s)
+    if not m:
         return None
+    s = m.group(0)
     has_dot, has_com = "." in s, "," in s
     if has_dot and has_com:
         dec = "." if s.rfind(".") > s.rfind(",") else ","
