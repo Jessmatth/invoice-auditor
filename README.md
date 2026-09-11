@@ -3,6 +3,22 @@ A Claude skill that extracts invoices **and proves the extraction is correct.**
 
 <img width="1408" height="768" alt="Gemini_Generated_Image_w5yljjw5yljjw5yl" src="https://github.com/user-attachments/assets/28c1ab6b-d5a1-453a-9083-252e1a45638e" />
 
+## What it found
+
+Pointed at [a public invoice dataset](https://huggingface.co/datasets/katanaml-org/invoices-donut-data-v1)
+that people use to train extraction models, it found **2 mislabeled records** in 76.
+One column shift, one stray digit. No model was involved in finding them.
+
+Pointed at 100 real photographed receipts, it found **2 bugs in itself.** A currency
+abbreviation was corrupting amounts by a factor of 1000, which is precisely the error
+class it exists to catch.
+
+And it publishes what it cannot do. A one-cent error is caught 0% of the time. Three
+named corruption classes pass verification while still being wrong. Those numbers are
+measured and in [EVALUATION.md](EVALUATION.md), not buried.
+
+## Why it can do that
+
 Most document-extraction tools return a confident JSON blob. You have no way to know
 whether the model misread a column, lost a thousands separator, or transposed two
 digits, and the model will report high confidence either way. Self-reported
@@ -95,6 +111,11 @@ tests/corpus/            76 invoices + human ground truth
 eval/results.json        latest evaluation run
 EVALUATION.md            method, results, and the limitations
 ```
+
+## How this was built
+
+The decision trail, including the things that turned out wrong and how they were
+found, is in [docs/how-this-was-built.md](docs/how-this-was-built.md).
 
 ## Why the design is this way
 
