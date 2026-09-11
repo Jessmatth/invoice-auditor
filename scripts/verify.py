@@ -22,7 +22,7 @@ import argparse, glob, json, re, sys
 from dataclasses import dataclass, asdict, field
 from decimal import Decimal, InvalidOperation
 
-__version__ = "2.0"
+__version__ = "3.0"
 
 # ---------------------------------------------------------------- numbers --
 
@@ -86,6 +86,7 @@ class Audit:
     findings: list = field(default_factory=list)
     recovered: list = field(default_factory=list)
     coverage: dict = field(default_factory=dict)
+    tax: dict = field(default_factory=dict)
     verifier_version: str = __version__
 
     def to_dict(self):
@@ -192,7 +193,7 @@ def audit_line(it, i, a):
     return net, gross
 
 
-def audit(doc, doc_id=None):
+def audit(doc, doc_id=None, expect_rate=None):
     doc = doc.get("gt_parse", doc)
     a = Audit(doc_id=doc_id)
     items   = doc.get("items") or doc.get("line_items") or []
@@ -241,6 +242,62 @@ def audit(doc, doc_id=None):
             "net total plus VAT total does not equal the gross total",
             fmt(exp), fmt(t_gross), fmt(t_gross - exp)))
 
+    # ---- tax model ------------------------------------------------------
+    # VAT puts a rate on every line, which gives a second independent route to
+    # each net amount and makes the tax figure itself cross-checkable. US sales
+    # tax is a single document-level number with no redundancy behind it. The
+    # audit is materially weaker in that case and has to say so rather than
+    # reporting a quiet "clean".
+    line_rates = [parse_rate(pick(it, "rate")) for it in items]
+    rated = [r for r in line_rates if r is not None]
+    doc_rate = parse_rate(summary.get("vat_rate") or summary.get("tax_rate")
+                          or summary.get("rate"))
+    eff = None
+    if t_net not in (None, 0) and t_vat is not None:
+        eff = (t_vat / t_net)
+
+    if items and len(rated) == len(items):
+        model, checked = "per_line_rate", True
+    elif doc_rate is not None:
+        model, checked = "document_rate", True
+        exp = t_net * (Decimal(1) + doc_rate) if t_net is not None else None
+        if exp is not None and t_gross is not None:
+            check(close(exp, t_gross, tol(2)), Finding(
+                "T1_document_rate", "error", "total_gross_worth",
+                f"stated tax rate of {doc_rate*100:.3g}% applied to the net total "
+                f"does not produce the stated gross total",
+                fmt(exp), fmt(t_gross), fmt(t_gross - exp)))
+    elif t_vat is not None:
+        model, checked = "document_amount", False
+    else:
+        model, checked = "none", False
+
+    if model == "document_amount":
+        if expect_rate is not None:
+            er = parse_rate(expect_rate)
+            exp = (t_net * er) if t_net is not None else None
+            if exp is not None:
+                checked = True
+                check(close(exp, t_vat, tol(2)), Finding(
+                    "T2_expected_rate", "error", "tax_amount",
+                    f"tax does not match the expected rate of {er*100:.4g}%",
+                    fmt(exp), fmt(t_vat), fmt(t_vat - exp)))
+        else:
+            a.findings.append(Finding(
+                "T3_tax_uncorroborated", "warning", "tax_amount",
+                "tax is stated only as a document-level amount, so the arithmetic "
+                "confirms it is consistent with the totals but cannot confirm the "
+                "rate is correct"
+                + (f"; the effective rate is {eff*100:.4g}%" if eff is not None else "")
+                + ". Pass --expect-rate to check it."))
+
+    a.tax = {
+        "model": model,
+        "rate_verified": checked,
+        "effective_rate": (f"{eff*100:.4g}%" if eff is not None else None),
+        "line_rates": sorted({f"{r*100:.4g}%" for r in rated}) or None,
+    }
+
     a.coverage = {
         "n_items": len(items),
         "lines_fully_reconciled": len(nets),
@@ -262,6 +319,9 @@ def main():
     ap.add_argument("--glob", default="*.json")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--quiet", action="store_true", help="summary line only")
+    ap.add_argument("--expect-rate", metavar="R",
+                    help="known tax rate for this jurisdiction, e.g. 8.25%% or 0.0825. "
+                         "Turns an unverifiable document-level tax amount into a real check.")
     args = ap.parse_args()
 
     paths = list(args.files)
@@ -270,7 +330,8 @@ def main():
     if not paths:
         ap.error("no input files")
 
-    results = [audit(json.load(open(p)), p.split("/")[-1].rsplit(".", 1)[0]).to_dict() for p in paths]
+    results = [audit(json.load(open(p)), p.split("/")[-1].rsplit(".", 1)[0],
+                     expect_rate=args.expect_rate).to_dict() for p in paths]
 
     if args.json:
         print(json.dumps(results, indent=2)); return
@@ -278,7 +339,9 @@ def main():
     tally = {"clean": 0, "flagged": 0, "unverifiable": 0}
     for r in results:
         tally[r["status"]] += 1
-        if r["status"] == "clean" or args.quiet:
+        # a clean document can still carry warnings, and a warning the user
+        # never sees is worthless; print anything with findings
+        if args.quiet or (r["status"] == "clean" and not r["findings"]):
             continue
         print(f"\n{r['doc_id']}  [{r['status']}]  {r['checks_passed']}/{r['checks_run']} checks passed")
         for f in r["findings"]:
@@ -292,6 +355,11 @@ def main():
             c = f", corroborated by {rec['corroborated_by']}" if rec["corroborated_by"] else ""
             print(f"   RECOVERED line {rec['line']} .{rec['field']} = {rec['value']} via {rec['method']}{c}")
 
+    models = {}
+    for r in results:
+        models[r["tax"].get("model", "none")] = models.get(r["tax"].get("model", "none"), 0) + 1
+    unver = sum(1 for r in results if not r["tax"].get("rate_verified"))
+
     tot, checks = len(results), sum(r["checks_run"] for r in results)
     passed = sum(r["checks_passed"] for r in results)
     rec = sum(len(r["recovered"]) for r in results)
@@ -300,6 +368,10 @@ def main():
     print(f"{checks} arithmetic checks   {passed} passed   {checks-passed} failed"
           + (f"   ({100*passed/checks:.1f}%)" if checks else ""))
     print(f"{rec} missing values recovered by derivation")
+    print(f"tax model: " + ", ".join(f"{k} x{v}" for k, v in sorted(models.items())))
+    if unver:
+        print(f"{unver} document(s) with a tax amount the arithmetic cannot corroborate; "
+              f"pass --expect-rate to check it")
 
 if __name__ == "__main__":
     main()

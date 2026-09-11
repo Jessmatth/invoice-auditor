@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "item_desc": "Goods",
+      "item_qty": "2",
+      "item_net_price": "100.00",
+      "item_net_worth": "200.00"
+    }
+  ],
+  "summary": {
+    "total_net_worth": "200.00",
+    "tax_rate": "8.25%",
+    "total_vat": "16.50",
+    "total_gross_worth": "216.50"
+  }
+}

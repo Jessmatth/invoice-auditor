@@ -26,6 +26,18 @@ CASES = [
     ("F_discount_line_clean",      "clean",   "discount carried as a negative line"),
     ("G_mixed_rates_bad_vat_total","flagged", "blended rate wrongly applied to the VAT total"),
     ("H_shipping_line_clean",      "clean",   "untaxed shipping line beside taxed goods"),
+    ("I_sales_tax_inflated",       "clean",   "inflated sales tax with the total adjusted to match"),
+    ("J_document_rate_clean",      "clean",   "document-level tax rate stated and correct"),
+    ("K_document_rate_bad",        "flagged", "document-level rate does not produce the stated total"),
+]
+
+# I_sales_tax_inflated is expected to pass, and that is the point. A single
+# document-level tax amount has no redundancy behind it, so arithmetic alone
+# cannot tell a correct 8.25% from an invented 14.4%. The audit reports the
+# effective rate and warns that it is uncorroborated; --expect-rate closes it.
+EXPECT_RATE_CASES = [
+    ("I_sales_tax_inflated", "8.25%", "flagged", "the same invoice, with the rate supplied"),
+    ("C_us_sales_tax_clean", "8.25%", "clean",   "correct invoice, with the rate supplied"),
 ]
 
 def main():
@@ -38,7 +50,15 @@ def main():
         if not ok:
             fails.append((name, expect, r, desc))
         print(f"{name:<32}{expect:<10}{r.status:<12}{'PASS' if ok else 'FAIL'}")
-    print(f"\n{len(CASES)-len(fails)} passed, {len(fails)} failed")
+    print(f"\n--- with a known jurisdiction rate supplied ---")
+    for name, rate, expect, desc in EXPECT_RATE_CASES:
+        r = audit(json.load(open(os.path.join(SHAPES, f"{name}.json"))), name, expect_rate=rate)
+        ok = r.status == expect
+        if not ok:
+            fails.append((name, expect, r, desc))
+        print(f"{name+' @'+rate:<32}{expect:<10}{r.status:<12}{'PASS' if ok else 'FAIL'}")
+
+    print(f"\n{len(CASES)+len(EXPECT_RATE_CASES)-len(fails)} passed, {len(fails)} failed")
     for name, expect, r, desc in fails:
         print(f"\n{name} ({desc}): expected {expect}, got {r.status}")
         for f in r.findings:
