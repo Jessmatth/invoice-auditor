@@ -1,8 +1,7 @@
 # invoice-auditor
-A Claude skill that extracts invoices **and proves the extraction is correct.
-<img width="1408" height="768" alt="Gemini_Generated_Image_w5yljjw5yljjw5yl" src="https://github.com/user-attachments/assets/28c1ab6b-d5a1-453a-9083-252e1a45638e" />
+A Claude skill that extracts invoices **and proves the extraction is correct.**
 
-**
+<img width="1408" height="768" alt="Gemini_Generated_Image_w5yljjw5yljjw5yl" src="https://github.com/user-attachments/assets/28c1ab6b-d5a1-453a-9083-252e1a45638e" />
 
 Most document-extraction tools return a confident JSON blob. You have no way to know
 whether the model misread a column, lost a thousands separator, or transposed two
