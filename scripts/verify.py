@@ -291,7 +291,7 @@ def audit(doc, doc_id=None, expect_rate=None, state=None):
         exp = t_net + sum(parts)
 
         if parts or t_net == t_gross:
-            desc = ", ".join(["net total"] + names) if names else "net total"
+            desc = " ".join(["net total"] + names) if names else "net total"
             check(close(exp, t_gross, tol(2 + len(parts))), Finding(
                 "D3_total_identity", "error", "total_gross_worth",
                 f"{desc} does not equal the gross total",
