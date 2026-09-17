@@ -24,10 +24,11 @@ whether the model misread a column, lost a thousands separator, or transposed tw
 digits, and the model will report high confidence either way. Self-reported
 confidence is the model grading its own homework.
 
-Invoices happen to be checkable. An invoice line carries five numbers (quantity,
-unit price, net, VAT rate, gross) of which only three are independent. The document
-over-determines itself, so the arithmetic either closes or it does not, and finding
-out requires no model at all.
+Invoices happen to be checkable, because they show their work. A line carries five
+numbers (quantity, unit price, net, VAT rate, gross) when three would do. Quantity
+times unit price has to equal the net; the net plus VAT has to equal the gross. The
+spare numbers check the others, so the arithmetic either closes or it does not, and
+finding out requires no model at all.
 
 This skill extracts with a model and then audits with code.
 

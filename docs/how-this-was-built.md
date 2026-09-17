@@ -8,10 +8,11 @@ to be wrong and how that surfaced, so those are kept rather than tidied away.
 Not because invoice extraction is underserved. It is crowded. Invoices got picked
 because of one property most document types lack: **the arithmetic closes.**
 
-A line carries five numbers, quantity, unit price, net, VAT rate and gross, of which
-only three are independent. The document over-determines itself. That means a wrong
-extraction is provably wrong, with no human judgement and no labels, which in turn
-means the tool can have a real accuracy number instead of a plausible-sounding one.
+A line carries five numbers, quantity, unit price, net, VAT rate and gross, when three
+would do. Quantity times unit price has to equal the net, and the net plus VAT has to
+equal the gross, so the spare numbers check the others. That means a wrong extraction
+is provably wrong, with no human judgement and no labels, which in turn means the tool
+can have a real accuracy number instead of a plausible-sounding one.
 
 Everything else followed from that choice. The selection rule was: build only where
 there is a deterministic check the model cannot fake.

@@ -1,0 +1,232 @@
+[
+  {
+    "split": "train",
+    "index": 18,
+    "invoice_no": "70372519",
+    "rule": "L1_line_closes",
+    "line": 7,
+    "expected": "299.98",
+    "found": "10.00",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 98,
+    "invoice_no": "13310164",
+    "rule": "D1_net_total",
+    "line": null,
+    "expected": "18,845.00",
+    "found": "17,045.00",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 108,
+    "invoice_no": "11489615",
+    "rule": "L1_line_closes",
+    "line": 1,
+    "expected": "36.80",
+    "found": "11.04",
+    "qty_has_percent": true
+  },
+  {
+    "split": "train",
+    "index": 126,
+    "invoice_no": "80918693",
+    "rule": "L1_line_closes",
+    "line": 5,
+    "expected": "170.00",
+    "found": "51.00",
+    "qty_has_percent": true
+  },
+  {
+    "split": "train",
+    "index": 138,
+    "invoice_no": "26363966",
+    "rule": "L2_route_conflict",
+    "line": 1,
+    "expected": "1,422.25",
+    "found": "284.45",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 161,
+    "invoice_no": "93281048",
+    "rule": "D1_net_total",
+    "line": null,
+    "expected": "38,789.83",
+    "found": "42,668.81",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 189,
+    "invoice_no": "72677375",
+    "rule": "L2_route_conflict",
+    "line": 1,
+    "expected": "1,999.75",
+    "found": "399.95",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 200,
+    "invoice_no": "18884359",
+    "rule": "D1_net_total",
+    "line": null,
+    "expected": "8,303.77",
+    "found": "11,479.77",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 204,
+    "invoice_no": "92627663",
+    "rule": "L1_line_closes",
+    "line": 3,
+    "expected": "24.80",
+    "found": "99.20",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 249,
+    "invoice_no": "51409570",
+    "rule": "L1_line_closes",
+    "line": 1,
+    "expected": "155.00",
+    "found": "62.00",
+    "qty_has_percent": true
+  },
+  {
+    "split": "train",
+    "index": 251,
+    "invoice_no": "76533932",
+    "rule": "L1_line_closes",
+    "line": 1,
+    "expected": "229.50",
+    "found": "114.75",
+    "qty_has_percent": true
+  },
+  {
+    "split": "train",
+    "index": 265,
+    "invoice_no": "58303988",
+    "rule": "L1_line_closes",
+    "line": 7,
+    "expected": "269.85",
+    "found": "10.00",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 288,
+    "invoice_no": "59612541",
+    "rule": "L1_line_closes",
+    "line": 4,
+    "expected": "54.76",
+    "found": "10.00",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 310,
+    "invoice_no": "35451351",
+    "rule": "L2_route_conflict",
+    "line": 1,
+    "expected": "2,080.00",
+    "found": "520.00",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 321,
+    "invoice_no": "51385584",
+    "rule": "D1_net_total",
+    "line": null,
+    "expected": "2,549.69",
+    "found": "254.97",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 330,
+    "invoice_no": "66525750",
+    "rule": "L1_line_closes",
+    "line": 3,
+    "expected": "69,696.00",
+    "found": "15,840.00",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 336,
+    "invoice_no": "74589240",
+    "rule": "L1_line_closes",
+    "line": 4,
+    "expected": "36.30",
+    "found": "39.93",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 349,
+    "invoice_no": "19608758",
+    "rule": "D1_net_total",
+    "line": null,
+    "expected": "10,881.74",
+    "found": "12,203.09",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 384,
+    "invoice_no": "69167020",
+    "rule": "L1_line_closes",
+    "line": 1,
+    "expected": "746.16",
+    "found": "820.78",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 406,
+    "invoice_no": "86792000",
+    "rule": "L2_route_conflict",
+    "line": 6,
+    "expected": "90.72",
+    "found": "45.36",
+    "qty_has_percent": false
+  },
+  {
+    "split": "train",
+    "index": 419,
+    "invoice_no": "15902016",
+    "rule": "L2_route_conflict",
+    "line": 5,
+    "expected": "4,949.91",
+    "found": "1,649.97",
+    "qty_has_percent": false
+  },
+  {
+    "split": "validation",
+    "index": 47,
+    "invoice_no": "42760323",
+    "rule": "L2_route_conflict",
+    "line": 1,
+    "expected": "25,200.00",
+    "found": "8,400.00",
+    "qty_has_percent": false
+  },
+  {
+    "split": "test",
+    "index": 13,
+    "invoice_no": "96051364",
+    "rule": "D2_gross_total",
+    "line": null,
+    "expected": "157,929.36",
+    "found": "1,579,929.37",
+    "qty_has_percent": false
+  }
+]

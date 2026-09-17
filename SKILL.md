@@ -9,8 +9,8 @@ Extraction is the easy half. This skill exists for the hard half: knowing when t
 extraction is wrong.
 
 An invoice line carries five numbers (quantity, unit price, net amount, VAT rate,
-gross amount) of which only three are independent. The document over-determines
-itself, and that redundancy is checkable by arithmetic with no model in the loop.
+gross amount) when three would do. The spare two are derivable from the rest, which
+means they check the rest, by arithmetic, with no model in the loop.
 Use it. Never report a figure as correct because it looked correct.
 
 ## The rule
